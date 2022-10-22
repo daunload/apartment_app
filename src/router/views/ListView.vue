@@ -1,9 +1,10 @@
 <template>
-    <div></div>
+    <div>
+    </div>
 </template>
 
 <script>
-import communityListDummy from '../../../public/DummyData'
+import { communityListDummy } from '@/../public/DummyData'
 
 export default {
     name: 'ListView',
@@ -12,9 +13,15 @@ export default {
             communityFacilities: null
         }
     },
-    mounted() {
+    created() {
         this.communityFacilities = communityListDummy
-        console.log(this.communityFacilities)
     }
 }
 </script>
+
+<style scoped>
+.commnity-info {
+    display: flex;
+    justify-content: center;
+}
+</style>

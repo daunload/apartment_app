@@ -1,17 +1,21 @@
-import MainView from '@/router/views/MainView'
-import ListView from '@/router/views/ListView'
-
 const routes = [
     {
         path: '/',
         name: 'Main',
-        component: MainView
+        component: () => import('@/router/layouts/DefaultLayout'),
+        children: [
+            {
+                path: '/',
+                name: 'home',
+                component: ()=> import('@/router/views/MainView'),
+            },
+            {
+                path: '/list',
+                name: 'list',
+                component: ()=> import('@/router/views/ListView'),
+            },
+        ]
     },
-    {
-        path: '/ListView', 
-        name: 'ListView',
-        component: ListView
-    }
 ]
 
 export default routes
