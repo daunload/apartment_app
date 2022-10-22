@@ -1,7 +1,7 @@
 const routes = [
     {
         path: '/',
-        name: 'Main',
+        name: 'defaultLayout',
         component: () => import('@/router/layouts/DefaultLayout'),
         children: [
             {
@@ -10,7 +10,7 @@ const routes = [
                 component: ()=> import('@/router/views/MainView'),
             },
             {
-                path: '/list',
+                path: '/listView',
                 name: 'list',
                 component: ()=> import('@/router/views/ListView'),
             },
