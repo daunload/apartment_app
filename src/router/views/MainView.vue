@@ -1,10 +1,13 @@
 <template>
-  <div>home view</div>
+  <div></div>
 </template>
 
 <script>
 export default {
-  name: 'MainView'
+  name: 'MainView',
+  mounted() {
+    console.log('min view')
+  }
 }
 </script>
 

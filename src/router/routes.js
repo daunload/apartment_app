@@ -1,11 +1,16 @@
+import MainView from '@/router/views/MainView'
+import ListView from '@/router/views/ListView'
+
 const routes = [
     {
-        path: '/', 
-        components: () => import('./views/MainView')
+        path: '/',
+        name: 'Main',
+        component: MainView
     },
     {
         path: '/ListView', 
-        components: () => import('./views/ListView')
+        name: 'ListView',
+        component: ListView
     }
 ]
 
