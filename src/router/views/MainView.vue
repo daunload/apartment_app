@@ -1,5 +1,8 @@
 <template>
-  <div></div>
+  <div>
+    <router-link to="/">홈 </router-link>
+    <router-link to="/listView">커뮤니티 </router-link>
+  </div>
 </template>
 
 <script>
