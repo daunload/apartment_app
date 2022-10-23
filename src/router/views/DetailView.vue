@@ -34,7 +34,7 @@
 							<div class="iconWrapper">
 								<img class="icon" :src="amenity.icon" />
 							</div>
-							<p>{{amenity.name}}</p>
+							<p class="iconName">{{amenity.name}}</p>
 						</div>
 					</div>
 					<div class="line" />
@@ -84,7 +84,7 @@ export default {
 .guideWrapper::v-deep .v-expansion-panel::before {
 	box-shadow: unset;
 }
- #wrapper::v-deep .v-item-group {
+.guideWrapper::v-deep .v-item-group .v-expansion-panels {
 	border: solid 0.5px #c0cdf1;
 	height: 12.533vw;
  }
@@ -219,6 +219,15 @@ export default {
 	.icon {
 		width: 7.733vw;
 		height: 7.733vw;
+	}
+	.iconName {
+		font-size: 2.933vw;
+		font-weight: normal;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: 0.82;
+		letter-spacing: normal;
+		color: #222;
 	}
 }
 
