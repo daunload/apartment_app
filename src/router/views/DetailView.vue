@@ -83,6 +83,9 @@ export default {
 
 <style scoped lang="scss">
 
+.guideWrapper::v-deep .v-expansion-panel-content__wrap {
+	padding: 0 15px;
+}
 .guideWrapper::v-deep .v-expansion-panel::before {
 	box-shadow: unset;
 }
@@ -102,16 +105,17 @@ export default {
 .guideWrapper::v-deep .v-expansion-panel--active > .v-expansion-panel-header {
 	min-height: unset;
 }
+.guideWrapper::v-deep .v-expansion-panel-header {
+	padding: 4vw;
+}
  .sub-title {
-		display: flex;
-		flex: none;
-		font-size: 14px;
-		font-weight: normal;
-		font-stretch: normal;
-		font-style: normal;
-		line-height: 1.14;
-		letter-spacing: normal;
-		color: #0f1e44;
+	font-size: 14px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.14;
+	letter-spacing: normal;
+	color: #0f1e44;
  }
 .container {
 	padding: 4vw 0;
