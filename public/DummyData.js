@@ -74,34 +74,29 @@ export const communityDetailDummy = [
     operationalPrograms: [
       {
         name: "헬스장 월 이용료",
-        days: "월",
-        price: 10000,
+        payment: "월 10,000원",
         isUse: true,
       },
       {
         name: "헬스장 1일권",
         description: "무료이용 횟수 초과 시 이용권 구매",
-        days: "1회",
-        price: 1000,
+        payment: "1회 1,000원",
         isUse: false,
       },
       {
         name: "사물함(남)",
         description: "헬스장 월 이용료 결제 시 이용가능",
-        days: "월",
-        price: 5000,
+        payment: "월 5,000원",
         isUse: false,
       },
       {
         name: "개인 PT",
-        days: "월",
-        price: 200000,
+        payment: "월 200,000원",
         isUse: true,
       },
       {
         name: "G.X.",
-        days: "월",
-        price: 100000,
+        payment: "월 100,000원",
         isUse: false,
       },
     ],
@@ -152,14 +147,12 @@ export const communityDetailDummy = [
     operationalPrograms: [
       {
         name: "독서실 1일권",
-        days: "일",
-        price: 10000,
+        payment: "일 10,000원",
         isUse: false,
       },
       {
         name: "독서실 월 정기권(남)",
-        days: "월",
-        price: 30000,
+        payment: "월 30,000원",
         isUse: true,
       },
     ],
@@ -207,14 +200,12 @@ export const communityDetailDummy = [
     operationalPrograms: [
       {
         name: "A룸",
-        days: "일",
-        price: 10000,
+        payment: "일 10,000원",
         isUse: false,
       },
       {
         name: "B룸",
-        days: "일",
-        price: 10000,
+        payment: "일 10,000원",
         isUse: false,
       },
     ],

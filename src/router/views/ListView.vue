@@ -1,17 +1,11 @@
 <template>
-    <div>
-        <v-container>
-            <v-row>
-                <template v-for="(facility, index) in communityFacilities">
-                    <v-col :row="6" :key="index" class="pa-0">
-												<router-link to="/detailView">
-                        <v-img :src="facility.thumbnail" :max-width="164" :max-height="112"/>
-												<p>{{facility.title}}</p>
-												</router-link>
-                    </v-col>
-                </template>
-            </v-row>
-        </v-container>
+    <div id="wrapper">
+        <template v-for="(facility, index) in communityFacilities">
+            <div class="facility-info" :key="index">
+                <img :src="facility.thumbnail" class="facility-image" />
+                <span class="facility-name">{{ facility.title }}</span>
+            </div>
+        </template>
     </div>
 </template>
 
@@ -31,9 +25,26 @@ export default {
 }
 </script>
 
-<style scoped>
-.commnity-info {
+<style scoped lang="scss">
+#wrapper {
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top:8vw;
+}
+.facility-info {
+    display: flex;
+    flex-direction: column;
+}
+.facility-image {
+    border-radius: 1.3vw;
+    margin-bottom: 2.1vw;
+    width: 44vw;
+    height: 29.8vw;
+}
+.facility-name {
+    font-size: 3.7vw;
+    line-height: 4.2vw;
+    margin-bottom: 6.4vw;
 }
 </style>
