@@ -3,18 +3,23 @@
 		<CarouselSlide :images="communityFacility.images" />
 		<p class="title">{{communityFacility.title}}</p>
 		<p class="description">{{communityFacility.description}}</p>
-		<div class="notificationWrapper">
-			<div class="notificationTextWrapper">
-				<p class="label">공지사항</p>
-				<p class="text">{{communityFacility.notification}}</p>
-			</div>
-			<img class="moreImage" src="./@/../../../assets/ic-set-more.png" srcset="./@/../../../assets/ic-set-more@2x.png 2x, ./@/../../../assets/ic-set-more@3x.png 3x" />
-		</div>
+		<v-row class="guideWrapper">
+		<v-expansion-panels accordion>
+			<v-expansion-panel>
+				<v-expansion-panel-header>
+				<p class="sub-title">공지사항</p>
+				</v-expansion-panel-header>
+				<v-expansion-panel-content>
+				<p class="text">{{communityFacility.notification}}</p>	
+				</v-expansion-panel-content>
+			</v-expansion-panel>
+		</v-expansion-panels>
+		</v-row>
 			<v-row class="guideWrapper">
     <v-expansion-panels accordion>
-		<v-expansion-panel>
+			<v-expansion-panel>
 				<v-expansion-panel-header>
-				<p>운영안내</p>
+				<p class="sub-title">운영안내</p>
 				</v-expansion-panel-header>
 				<v-expansion-panel-content>
 					<LabelWrapper label="시설 위치 " :text="communityFacility.location" />
@@ -36,7 +41,7 @@
 					<p class="subTitle">주의사항</p>
 					<p class="text">주의사항 입니다.</p>
 				</v-expansion-panel-content>
-    </v-expansion-panel>
+      </v-expansion-panel>
 		</v-expansion-panels>
 			</v-row>
 		<p class="subTitle">운영 프로그램</p>
@@ -83,8 +88,22 @@ export default {
 	border: solid 0.5px #c0cdf1;
 	height: 12.533vw;
  }
- #wrapper::v-deep .v-expansion-panel-header {
+ .guideWrapper::v-deep .v-expansion-panel-header {
+	display: flex;
 	padding: 4vw;
+	justify-content: space-between;
+ }
+ .v-expansion-panel-header > *:not(.v-expansion-panel-header__icon) {
+	flex: none;
+ }
+ .sub-title {
+		font-size: 14px;
+		font-weight: normal;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: 1.14;
+		letter-spacing: normal;
+		color: #0f1e44;
  }
 .container {
 	padding: 4vw 0;
@@ -146,7 +165,7 @@ export default {
 	.guideWrapper {
 		border-radius: 1.333vw;
 		border: solid 0.133vw #c0cdf1;
-		margin: 0 0 8vw 0;
+		margin: 0 0 4vw 0;
 	}
 	.label {
 		width: 64px;
