@@ -13,8 +13,8 @@
 		<div class="guideWrapper">
 			<p class="subTitle">운영안내</p>
 			<LabelWrapper label="시설 위치 " :text="communityFacility.location" />
-			<LabelWrapper label="운영시간 " text="communityFacility.startTime ~ communityFacility.endTime" />
-			<LabelWrapper label="휴게시간 " text="communityFacility.breakStartTime ~ communityFacility.breakEndTime" />
+			<LabelWrapper label="운영 시간 " :text="getOpenTime(communityFacility.startTime, communityFacility.endTime)" />
+			<LabelWrapper label="휴게 시간 " :text="getOpenTime(communityFacility.breakStartTime, communityFacility.breakEndTime)" />
 			<LabelWrapper label="휴일 " :text="communityFacility.holiday" />
 			<LabelWrapper label="문의 " :text="communityFacility.phone" />
 			<div class="line" />
@@ -32,7 +32,7 @@
 			<p class="text">주의사항 입니다.</p>
 		</div>
 		<p class="subTitle">운영 프로그램</p>
-		<div v-for="(program, index) in communityFacility.operationalPrograms" :key={index}>
+		<div v-for="(program, index) in communityFacility.operationalPrograms" :key="index">
 			<ProgramCard :leftTitle="program.name" :leftBottomTitle="program.description" :rightTitle="program.payment" :rightBottomTitle="getUseedText(program.isUse)"/>
 		</div>
   </div>
@@ -58,6 +58,9 @@ export default {
 		methods: {
 			getUseedText(isUse) {
 				return isUse ? "이용중" : ""
+			},
+			getOpenTime(startTime, endTime) {
+				return `${startTime} ~ ${endTime}`
 			}
 		}
 }
