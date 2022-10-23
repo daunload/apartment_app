@@ -4,7 +4,10 @@
             <v-row>
                 <template v-for="(facility, index) in communityFacilities">
                     <v-col :row="6" :key="index" class="pa-0">
+												<router-link to="/detailView">
                         <v-img :src="facility.thumbnail" :max-width="164" :max-height="112"/>
+												<p>{{facility.title}}</p>
+												</router-link>
                     </v-col>
                 </template>
             </v-row>
@@ -23,7 +26,7 @@ export default {
         }
     },
     created() {
-        this.communityFacilities = communityListDummy
+			this.communityFacilities = communityListDummy
     }
 }
 </script>
