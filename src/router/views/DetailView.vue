@@ -109,6 +109,8 @@ export default {
 	padding: 4vw;
 }
  .sub-title {
+	display: flex;
+	flex: none;
 	font-size: 14px;
 	font-weight: normal;
 	font-stretch: normal;
