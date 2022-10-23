@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-		<img class="image" :src="communityFacility.images[0]" />
+		<CarouselSlide :images="communityFacility.images" />
 		<p class="title">{{communityFacility.title}}</p>
 		<p class="description">{{communityFacility.description}}</p>
 		<div class="notificationWrapper">
@@ -12,26 +12,11 @@
 		</div>
 		<div class="guideWrapper">
 			<p class="subTitle">운영안내</p>
-			<div class="labelWrapper">
-				<p class="label">시설위치 </p>
-				<p class="text">{{communityFacility.location}}</p>
-			</div>
-			<div class="labelWrapper">
-				<p class="label">운영시간 </p>
-				<p class="text">{{communityFacility.startTime}} ~ {{communityFacility.endTime}}</p>
-			</div>
-			<div class="labelWrapper">
-				<p class="label">휴게시간 </p>
-				<p class="text">{{communityFacility.breakStartTime}} ~ {{communityFacility.breakEndTime}}</p>
-			</div>
-			<div class="labelWrapper">
-				<p class="label">휴일 </p>
-				<p class="text">{{communityFacility.holiday}}</p>
-			</div>
-			<div class="labelWrapper">
-				<p class="label">문의 </p>
-				<p class="text">{{communityFacility.phone}}</p>
-			</div>
+			<LabelWrapper label="시설 위치 " :text="communityFacility.location" />
+			<LabelWrapper label="운영시간 " text="communityFacility.startTime ~ communityFacility.endTime" />
+			<LabelWrapper label="휴게시간 " text="communityFacility.breakStartTime ~ communityFacility.breakEndTime" />
+			<LabelWrapper label="휴일 " :text="communityFacility.holiday" />
+			<LabelWrapper label="문의 " :text="communityFacility.phone" />
 			<div class="line" />
 			<p class="subTitle">편의시설</p>
 			<div class="amenity">
@@ -47,14 +32,21 @@
 			<p class="text">주의사항 입니다.</p>
 		</div>
 		<p class="subTitle">운영 프로그램</p>
+		<div v-for="(program, index) in communityFacility.operationalPrograms" :key={index}>
+			<ProgramCard :leftTitle="program.name" :leftBottomTitle="program.description" :rightTitle="program.payment" :rightBottomTitle="getUseedText(program.isUse)"/>
+		</div>
   </div>
 </template>
 
 <script>
 import { communityDetailDummy } from '@/../public/DummyData'
+import CarouselSlide from '@/components/CarouselSlide.vue'
+import ProgramCard from '@/components/DetailOptionCard.vue'
+import LabelWrapper from '@/components/DetailLabelWrapper.vue'
 
 export default {
-    name: 'DetailView',
+		name: 'DetailView',
+		components: { CarouselSlide, ProgramCard, LabelWrapper },
     data() {
         return {
             communityFacility: {}
@@ -62,13 +54,18 @@ export default {
     },
     created() {
 			this.communityFacility = communityDetailDummy[0]
-    }
+    },
+		methods: {
+			getUseedText(isUse) {
+				return isUse ? "이용중" : ""
+			}
+		}
 }
 </script>
 
 <style scoped lang="scss">
 .container {
-	padding: 4vw 4.053vw;
+	padding: 4vw 0;
 	.line {
 		height: 1px;
 		border: solid 0.5px #c0cdf1;
@@ -81,7 +78,7 @@ export default {
 	}
 	.title {
 		font-size: 17px;
-		margin: 0 0 3.200vw 0;
+		margin: 4.800vw 0 3.200vw 0;
 		font-weight: normal;
 		font-stretch: normal;
 		font-style: normal;
@@ -128,11 +125,7 @@ export default {
 		padding: 5.333vw 4vw 6.667vw;
 		border-radius: 1.333vw;
 		border: solid 0.133vw #c0cdf1;
-	}
-	.labelWrapper {
-		display: flex;
-		flex-direction: row;
-		margin: 0 0 3.200vw 0;
+		margin: 0 0 8vw 0;
 	}
 	.label {
 		width: 64px;
