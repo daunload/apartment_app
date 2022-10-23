@@ -4,7 +4,8 @@
 	</div>
 </template>
 
-<script>
-export default {
+<style scoped lang="scss">
+#app {
+	padding: 0 4vw;
 }
-</script>
+</style>

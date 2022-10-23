@@ -8,8 +8,6 @@
 <script>
 export default {
   name: 'MainView',
-  mounted() {
-  }
 }
 </script>
 
