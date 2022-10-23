@@ -1,10 +1,10 @@
 <template>
     <div id="wrapper">
         <template v-for="(facility, index) in communityFacilities">
-            <div class="facility-info" :key="index">
-                <img :src="facility.thumbnail" class="facility-image" />
-                <span class="facility-name">{{ facility.title }}</span>
-            </div>
+					<router-link to="/detailView" class="facility-info" :key="index">
+						<img :src="facility.thumbnail" class="facility-image" />
+						<span class="facility-name">{{ facility.title }}</span>
+					</router-link>
         </template>
     </div>
 </template>
@@ -20,8 +20,13 @@ export default {
         }
     },
     created() {
-        this.communityFacilities = communityListDummy
-    }
+			this.communityFacilities = communityListDummy
+    },
+		methods: {
+    // click() {
+    //   this.$router.push(`/detailView/${id}`);
+    // },
+  },
 }
 </script>
 

@@ -1,7 +1,10 @@
 <template>
     <div class="wrapper">
         <div class="left-text">
+					<div class="left-top-wrapper">
             <span class="top">{{ leftTitle  }}</span>
+						<span v-if="useText" class="use">{{ useText  }}</span>
+					</div>
             <span v-if="leftBottomTitle" class="bottom">{{ leftBottomTitle }}</span>
         </div>
         <div class="right-text">
@@ -19,6 +22,10 @@ export default {
             type: String,
             require: true,
         },
+				useText: {
+            type: String,
+            require: false,
+				},
         leftBottomTitle: {
             type: String,
             require: false,
@@ -49,6 +56,16 @@ export default {
     align-items: center;
     margin-bottom: 3.2vw;
 
+		.left-top-wrapper {
+			display: flex;
+			align-items: center;
+		}
+
+		.left-text {
+			display: flex;
+			flex-direction: column;
+		}
+
     .left-text .bottom {
         font-size: 3.2vw;
     }
@@ -66,5 +83,19 @@ export default {
     .bottom {
         margin-top: 1.8vw;
     }
+		.use {
+        margin-left: 2.133vw;
+        padding: 0.533vw 1.867vw;
+        border-radius: 2vw;
+        background-color: #4c93ff;
+				font-size: 2.667vw;
+				font-weight: normal;
+				font-stretch: normal;
+				font-style: normal;
+				line-height: 1.1;
+				letter-spacing: normal;
+				text-align: center;
+				color: #fff;
+		}
 }
 </style>
