@@ -3,8 +3,11 @@
         <v-container>
             <v-row>
                 <template v-for="(facility, index) in communityFacilities">
-                    <v-col :row="6" :key="index" class="pa-0">
-                        <v-img :src="facility.thumbnail" :max-width="164" :max-height="112"/>
+                    <v-col :key="index" class="pa-0 justify-center">
+                        <v-card :flat="true">
+                            <v-img :src="facility.thumbnail" :max-width="164" :max-height="112" class="facility-image"/>
+                            <span class="facility-title">{{ facility.title }}</span>
+                        </v-card>
                     </v-col>
                 </template>
             </v-row>
@@ -28,9 +31,13 @@ export default {
 }
 </script>
 
-<style scoped>
-.commnity-info {
-    display: flex;
-    justify-content: center;
+<style scoped lang="scss">
+.facility-image {
+    border-radius: 1.3vw;
+    margin-bottom: 2.1vw;
+}
+.facility-title {
+    font-size: 3.7vw;
+    line-heiht: 4.2vw;
 }
 </style>
