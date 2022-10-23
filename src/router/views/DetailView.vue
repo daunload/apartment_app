@@ -75,11 +75,15 @@ export default {
 </script>
 
 <style scoped lang="scss">
- #wrapper::v-deep.v-item-group {
+
+.guideWrapper::v-deep .v-expansion-panel::before {
+	box-shadow: unset;
+}
+ #wrapper::v-deep .v-item-group {
 	border: solid 0.5px #c0cdf1;
 	height: 12.533vw;
  }
- #wrapper::v-deep.v-expansion-panel-header {
+ #wrapper::v-deep .v-expansion-panel-header {
 	padding: 4vw;
  }
 .container {
