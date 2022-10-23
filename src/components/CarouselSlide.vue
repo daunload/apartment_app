@@ -1,9 +1,11 @@
 <template>
-    <v-carousel :show-arrows="false" hide-delimiter-background>
-      <v-carousel-item v-for="(image,index) in images" :key="index">
-        <img :src="image" />
-      </v-carousel-item>
-    </v-carousel>
+    <div id="wrapper">
+        <v-carousel :show-arrows="false" hide-delimiter-background>
+        <v-carousel-item v-for="(image,index) in images" :key="index">
+            <img :src="image" />
+        </v-carousel-item>
+        </v-carousel>
+    </div>
 </template>
 
 <script>
@@ -18,14 +20,14 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.wrapper::v-deep .v-carousel {
+#wrapper::v-deep .v-carousel {
   height: unset !important;
 }
-.wrapper::v-deep .v-carousel__item {
+#wrapper::v-deep .v-carousel__item {
   height: unset !important;
 }
 
-.wrapper::v-deep .v-carousel__item img {
+#wrapper::v-deep .v-carousel__item img {
   width: 100%;
 }
 </style>
