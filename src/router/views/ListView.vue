@@ -1,17 +1,11 @@
 <template>
-    <div>
-        <v-container>
-            <v-row>
-                <template v-for="(facility, index) in communityFacilities">
-                    <v-col :key="index" class="pa-0 justify-center">
-                        <v-card :flat="true">
-                            <v-img :src="facility.thumbnail" :max-width="164" :max-height="112" class="facility-image"/>
-                            <span class="facility-title">{{ facility.title }}</span>
-                        </v-card>
-                    </v-col>
-                </template>
-            </v-row>
-        </v-container>
+    <div id="wrapper">
+        <template v-for="(facility, index) in communityFacilities">
+            <div class="facility-info" :key="index">
+                <img :src="facility.thumbnail" class="facility-image" />
+                <span class="facility-name">{{ facility.title }}</span>
+            </div>
+        </template>
     </div>
 </template>
 
@@ -32,12 +26,25 @@ export default {
 </script>
 
 <style scoped lang="scss">
+#wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top:8vw;
+}
+.facility-info {
+    display: flex;
+    flex-direction: column;
+}
 .facility-image {
     border-radius: 1.3vw;
     margin-bottom: 2.1vw;
+    width: 44vw;
+    height: 29.8vw;
 }
-.facility-title {
+.facility-name {
     font-size: 3.7vw;
-    line-heiht: 4.2vw;
+    line-height: 4.2vw;
+    margin-bottom: 6.4vw;
 }
 </style>
