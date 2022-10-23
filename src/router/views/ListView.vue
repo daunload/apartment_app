@@ -21,7 +21,12 @@ export default {
     },
     created() {
 			this.communityFacilities = communityListDummy
-    }
+    },
+		methods: {
+    // click() {
+    //   this.$router.push(`/detailView/${id}`);
+    // },
+  },
 }
 </script>
 

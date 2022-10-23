@@ -10,30 +10,38 @@
 			</div>
 			<img class="moreImage" src="./@/../../../assets/ic-set-more.png" srcset="./@/../../../assets/ic-set-more@2x.png 2x, ./@/../../../assets/ic-set-more@3x.png 3x" />
 		</div>
-		<div class="guideWrapper">
-			<p class="subTitle">운영안내</p>
-			<LabelWrapper label="시설 위치 " :text="communityFacility.location" />
-			<LabelWrapper label="운영 시간 " :text="getOpenTime(communityFacility.startTime, communityFacility.endTime)" />
-			<LabelWrapper label="휴게 시간 " :text="getOpenTime(communityFacility.breakStartTime, communityFacility.breakEndTime)" />
-			<LabelWrapper label="휴일 " :text="communityFacility.holiday" />
-			<LabelWrapper label="문의 " :text="communityFacility.phone" />
-			<div class="line" />
-			<p class="subTitle">편의시설</p>
-			<div class="amenity">
-				<div class="amenityWrapper" v-for="(amenity, index) in communityFacility.amenities" :key="index">
-					<div class="iconWrapper">
-						<img class="icon" :src="amenity.icon" />
+			<v-row class="guideWrapper">
+    <v-expansion-panels accordion>
+		<v-expansion-panel>
+				<v-expansion-panel-header>
+				<p>운영안내</p>
+				</v-expansion-panel-header>
+				<v-expansion-panel-content>
+					<LabelWrapper label="시설 위치 " :text="communityFacility.location" />
+					<LabelWrapper label="운영 시간 " :text="getOpenTime(communityFacility.startTime, communityFacility.endTime)" />
+					<LabelWrapper label="휴게 시간 " :text="getOpenTime(communityFacility.breakStartTime, communityFacility.breakEndTime)" />
+					<LabelWrapper label="휴일 " :text="communityFacility.holiday" />
+					<LabelWrapper label="문의 " :text="communityFacility.phone" />
+					<div class="line" />
+					<p class="subTitle">편의시설</p>
+					<div class="amenity">
+						<div class="amenityWrapper" v-for="(amenity, index) in communityFacility.amenities" :key="index">
+							<div class="iconWrapper">
+								<img class="icon" :src="amenity.icon" />
+							</div>
+							<p>{{amenity.name}}</p>
+						</div>
 					</div>
-					<p>{{amenity.name}}</p>
-				</div>
-			</div>
-			<div class="line" />
-			<p class="subTitle">주의사항</p>
-			<p class="text">주의사항 입니다.</p>
-		</div>
+					<div class="line" />
+					<p class="subTitle">주의사항</p>
+					<p class="text">주의사항 입니다.</p>
+				</v-expansion-panel-content>
+    </v-expansion-panel>
+		</v-expansion-panels>
+			</v-row>
 		<p class="subTitle">운영 프로그램</p>
 		<div v-for="(program, index) in communityFacility.operationalPrograms" :key="index">
-			<ProgramCard :leftTitle="program.name" :leftBottomTitle="program.description" :rightTitle="program.payment" :rightBottomTitle="getUseedText(program.isUse)"/>
+			<ProgramCard :leftTitle="program.name" :leftBottomTitle="program.description" :rightTitle="program.payment" :useText="getUseedText(program.isUse)"/>
 		</div>
   </div>
 </template>
@@ -67,6 +75,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
+ #wrapper::v-deep.v-item-group {
+	border: solid 0.5px #c0cdf1;
+	height: 12.533vw;
+ }
+ #wrapper::v-deep.v-expansion-panel-header {
+	padding: 4vw;
+ }
 .container {
 	padding: 4vw 0;
 	.line {
@@ -125,7 +140,6 @@ export default {
 	}
 	}
 	.guideWrapper {
-		padding: 5.333vw 4vw 6.667vw;
 		border-radius: 1.333vw;
 		border: solid 0.133vw #c0cdf1;
 		margin: 0 0 8vw 0;
@@ -161,7 +175,15 @@ export default {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
-		};
+			margin: 0 1.600vw;
+		}
+		.amenityWrapper:first-child {
+    margin-left: 0;
+  }
+			.amenityWrapper:last-child {
+    margin-right: 0;
+  }
+		
 	}
 	.iconWrapper {
 		width: 12vw;
