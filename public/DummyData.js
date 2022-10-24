@@ -55,31 +55,40 @@ export const communityDetailDummy = [
     precautions: "주의사항입니다.",
     operationalPrograms: [
       {
+        programId: 1,
         name: "헬스장 월 이용료",
         payment: "월 10,000원",
         isUse: true,
+        isRegularPayment: true,
       },
       {
+        programId: 2,
         name: "헬스장 1일권",
         description: "무료이용 횟수 초과 시 이용권 구매",
         payment: "1회 1,000원",
         isUse: false,
       },
       {
+        programId: 3,
         name: "사물함(남)",
         description: "헬스장 월 이용료 결제 시 이용가능",
         payment: "월 5,000원",
         isUse: false,
+        isRegularPayment: true,
       },
       {
+        programId: 4,
         name: "개인 PT",
         payment: "월 200,000원",
         isUse: true,
+        isRegularPayment: true,
       },
       {
+        programId: 5,
         name: "G.X.",
         payment: "월 100,000원",
         isUse: false,
+        isRegularPayment: true,
       },
     ],
   },
@@ -116,14 +125,17 @@ export const communityDetailDummy = [
     ],
     operationalPrograms: [
       {
+        programId: 6,
         name: "독서실 1일권",
         payment: "일 10,000원",
         isUse: false,
       },
       {
+        programId: 7,
         name: "독서실 월 정기권(남)",
         payment: "월 30,000원",
         isUse: true,
+        isRegularPayment: true,
       },
     ],
   },
@@ -163,15 +175,119 @@ export const communityDetailDummy = [
       "최대 3일까지 예약 가능합니다. 이용 후 다음 사람을 위해 깨끗히 정리 부탁드립니다",
     operationalPrograms: [
       {
+        programId: 8,
         name: "A룸",
         payment: "일 10,000원",
-        isUse: false,
+        isUse: true,
       },
       {
+        programId: 9,
         name: "B룸",
         payment: "일 10,000원",
         isUse: false,
+        isRegularPayment: true,
       },
     ],
+  },
+];
+
+export const communityProgramDummy = [
+  {
+    programId: 1,
+    programs: [
+      {
+        name: "헬스장 월 이용료",
+        payment: "월 10,000원",
+        isUse: true,
+        isRegularPayment: true,
+      },
+    ],
+  },
+  {
+    programId: 2,
+    programs: [
+      {
+        name: "헬스장 1일권",
+        description: "무료이용 횟수 초과 시 이용권 구매",
+        payment: "1회 1,000원",
+        isUse: false,
+      },
+    ],
+  },
+  {
+    programId: 3,
+    name: "사물함(남)",
+    description: "헬스장 월 이용료 결제 시 이용가능",
+    payment: "월 5,000원",
+    isUse: false,
+    isRegularPayment: true,
+  },
+  {
+    programId: 4,
+    name: "개인 PT",
+    description: "1대1 맞춤형 트레이닝",
+    programs: [
+      {
+        name: "개인 PT(20회)",
+        payment: "월 200,000원",
+        isRegularPayment: true,
+      },
+      {
+        name: "개인 PT(40회)",
+        payment: "월 350,000원",
+        isRegularPayment: true,
+      },
+    ],
+  },
+  {
+    programId: 5,
+    name: "G.X.",
+    description: "다양한 G.X. 프로그램",
+    programs: [
+      {
+        name: "줌바",
+        payment: "월 45,000원",
+        description: "화, 목 09:00",
+        isRegularPayment: true,
+      },
+      {
+        name: "요가",
+        payment: "월 40,000원",
+        description: "월, 금 09:00",
+        isRegularPayment: true,
+      },
+      {
+        name: "다이어트 댄스",
+        payment: "월 45,000원",
+        description: "수, 금 09:00",
+        isRegularPayment: true,
+      },
+    ],
+  },
+  {
+    programId: 6,
+    name: "독서실 1일권",
+    payment: "일 10,000원",
+    isUse: false,
+  },
+  {
+    programId: 7,
+    name: "독서실 월 정기권(남)",
+    payment: "월 30,000원",
+    isUse: true,
+    isRegularPayment: true,
+  },
+  {
+    programId: 8,
+    name: "A룸",
+    payment: "일 10,000원",
+    isUse: true,
+  },
+  {
+    programId: 9,
+    name: "B룸",
+    payment: "일 10,000원",
+    isUse: false,
+    isRegularPayment: true,
   },
 ];

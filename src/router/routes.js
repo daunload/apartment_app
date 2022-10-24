@@ -19,6 +19,11 @@ const routes = [
     name: "register",
     component: () => import("@/router/views/DetailRegister"),
   },
+  {
+    path: "/selectProgram/:id",
+    name: "selectProgram",
+    component: () => import("@/router/views/DetailSelectProgram"),
+  },
 ];
 
 export default routes;
