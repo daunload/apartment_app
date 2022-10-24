@@ -1,23 +1,23 @@
 <template>
-    <div id="wrapper">
-        <v-carousel :show-arrows="false" hide-delimiter-background>
-        <v-carousel-item v-for="(image,index) in images" :key="index">
-            <img class="image" :src="image" />
-        </v-carousel-item>
-        </v-carousel>
-    </div>
+  <div id="wrapper">
+    <v-carousel :show-arrows="false" hide-delimiter-background>
+      <v-carousel-item v-for="(image, index) in images" :key="index">
+        <img class="image" :src="image" />
+      </v-carousel-item>
+    </v-carousel>
+  </div>
 </template>
 
 <script>
 export default {
-	naem: 'CarouselSlide',
-    props: {
-        images: {
-            type: Array,
-            require: true
-        },
-    }
-}
+  naem: "CarouselSlide",
+  props: {
+    images: {
+      type: Array,
+      require: true,
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">
@@ -32,6 +32,6 @@ export default {
   width: 100%;
 }
 .image {
-	height: 53.333vw;
+  height: 53.333vw;
 }
 </style>
