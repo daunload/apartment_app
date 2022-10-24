@@ -291,3 +291,5 @@ export const communityProgramDummy = [
     isRegularPayment: true,
   },
 ];
+
+export const timeDummy = ["09:00~10:00", "10:00~11:00", "11:00~12:00"];

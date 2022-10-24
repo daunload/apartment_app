@@ -24,6 +24,11 @@ const routes = [
     name: "selectProgram",
     component: () => import("@/router/views/DetailSelectProgram"),
   },
+  {
+    path: "/selectTime",
+    name: "selectTime",
+    component: () => import("@/router/views/DetailSelectTime"),
+  },
 ];
 
 export default routes;
