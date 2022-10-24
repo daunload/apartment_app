@@ -1,8 +1,10 @@
 <template>
-  <div>
-    <router-link to="/">홈 </router-link>
-    <router-link to="/listView">커뮤니티 </router-link>
-    <router-link to="/DetailRegister">커뮤니티 </router-link>
+  <div class="container">
+    <router-link to="/listView">커뮤니티 리스트</router-link>
+    <router-link to="/detailView/1">커뮤니티 상세</router-link>
+    <router-link to="/register">신청 페이지 </router-link>
+    <router-link to="/selectProgram/4">프로그램 선택</router-link>
+    <router-link to="/selectTime">프로그램 시간 선택</router-link>
   </div>
 </template>
 
@@ -12,4 +14,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped lang="scss">
+.container {
+  display: flex;
+  flex-direction: column;
+}
+</style>

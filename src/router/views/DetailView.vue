@@ -3,20 +3,31 @@
     <CarouselSlide :images="communityFacility.images" />
     <p class="title">{{ communityFacility.title }}</p>
     <p class="description">{{ communityFacility.description }}</p>
-    <div class="notificationWrapper">
-      <div class="notificationTextWrapper">
-        <p class="label">공지사항</p>
-        <p class="text">{{ communityFacility.notification }}</p>
-      </div>
-      <img
-        class="moreImage"
-        src="./@/../../../assets/ic-set-more.png"
-        srcset="
-          ./@/../../../assets/ic-set-more@2x.png 2x,
-          ./@/../../../assets/ic-set-more@3x.png 3x
-        "
-      />
-    </div>
+
+    <v-row class="guideWrapper">
+      <v-expansion-panels accordion>
+        <v-expansion-panel @click="clickedNoticeToggle">
+          <v-expansion-panel-header>
+            <p class="sub-title">공지사항</p>
+            <template v-slot:actions>
+              <img
+                :class="{ active: noticeToggle }"
+                class="moreImage"
+                src="./@/../../../assets/ic-set-more.png"
+                srcset="
+                  ./@/../../../assets/ic-set-more@2x.png 2x,
+                  ./@/../../../assets/ic-set-more@3x.png 3x
+                "
+              />
+            </template>
+          </v-expansion-panel-header>
+          <v-expansion-panel-content>
+            <p class="text">{{ communityFacility.notification }}</p>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+      </v-expansion-panels>
+    </v-row>
+
     <v-row class="guideWrapper">
       <v-expansion-panels accordion>
         <v-expansion-panel @click="clickedGuideToggle">
@@ -111,6 +122,7 @@ export default {
     return {
       communityFacility: {},
       guideToggle: false,
+      noticeToggle: false,
     };
   },
   beforeMount() {
@@ -134,6 +146,9 @@ export default {
     },
     clickedGuideToggle() {
       this.guideToggle = !this.guideToggle;
+    },
+    clickedNoticeToggle() {
+      this.noticeToggle = !this.noticeToggle;
     },
     click(id) {
       this.$router.push(`/selectProgram/${id}`);
