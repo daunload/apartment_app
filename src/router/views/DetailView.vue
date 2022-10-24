@@ -85,12 +85,15 @@
       v-for="(program, index) in communityFacility.operationalPrograms"
       :key="index"
     >
-      <ProgramCard
-        :leftTitle="program.name"
-        :leftBottomTitle="program.description"
-        :rightTitle="program.payment"
-        :useText="getUseedText(program.isUse)"
-      />
+      <div @click="click(program.programId)">
+        <ProgramCard
+          :leftTitle="program.name"
+          :leftBottomTitle="program.description"
+          :rightTitle="program.payment"
+          :useText="getUseedText(program.isUse)"
+          :rightBottomTitle="getRegularPayment(program.isRegularPayment)"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -102,39 +105,46 @@ import ProgramCard from "@/components/DetailOptionCard.vue";
 import LabelWrapper from "@/components/DetailLabelWrapper.vue";
 
 export default {
-		name: 'DetailView',
-		components: { CarouselSlide, ProgramCard, LabelWrapper },
-    data() {
-        return {
-            communityFacility: {},
-						guideToggle: false,
-        }
-    },
-		beforeMount() {
+  name: "DetailView",
+  components: { CarouselSlide, ProgramCard, LabelWrapper },
+  data() {
+    return {
+      communityFacility: {},
+      guideToggle: false,
+    };
+  },
+  beforeMount() {
     this.getCommunityFacility();
   },
-	methods: {
-		getCommunityFacility() {
+  methods: {
+    getCommunityFacility() {
       const communityFacilityId = parseInt(this.$route.params.id);
-			console.log(communityDetailDummy.filter((cummunity) => cummunity.id == communityFacilityId));
-      this.communityFacility = communityDetailDummy.filter((cummunity) => cummunity.id == communityFacilityId).pop();
+      this.communityFacility = communityDetailDummy
+        .filter((cummunity) => cummunity.id == communityFacilityId)
+        .pop();
     },
-		getUseedText(isUse) {
-			return isUse ? "이용중" : ""
-		},
-		getOpenTime(startTime, endTime) {
-			return `${startTime} ~ ${endTime}`
-		},
-		clickedGuideToggle() {
-			this.guideToggle = !this.guideToggle
-		}
-	}
-}
+    getUseedText(isUse) {
+      return isUse ? "이용중" : "";
+    },
+    getRegularPayment(getRegularPayment) {
+      return getRegularPayment ? "정기결제" : "";
+    },
+    getOpenTime(startTime, endTime) {
+      return `${startTime} ~ ${endTime}`;
+    },
+    clickedGuideToggle() {
+      this.guideToggle = !this.guideToggle;
+    },
+    click(id) {
+      this.$router.push(`/selectProgram/${id}`);
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">
 .guideWrapper::v-deep .v-expansion-panel-content__wrap {
-  padding: 0 15px;
+  padding: 0 4vw 4vw;
 }
 .guideWrapper::v-deep .v-expansion-panel::before {
   box-shadow: unset;
