@@ -10,7 +10,7 @@ const routes = [
     component: () => import("@/router/views/ListView"),
   },
   {
-    path: "/detailView",
+    path: "/detailView/:id",
     name: "detail",
     component: () => import("@/router/views/DetailView"),
   },
@@ -21,4 +21,4 @@ const routes = [
   },
 ];
 
-export default routes
+export default routes;

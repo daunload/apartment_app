@@ -61,13 +61,18 @@ export default {
     data() {
         return {
             communityFacility: {},
-			guideToggle: false,
+						guideToggle: false,
         }
     },
-    created() {
-			this.communityFacility = communityDetailDummy[0]
-    },
+		beforeMount() {
+    this.getCommunityFacility();
+  },
 	methods: {
+		getCommunityFacility() {
+      const communityFacilityId = parseInt(this.$route.params.id);
+			console.log(communityDetailDummy.filter((cummunity) => cummunity.id == communityFacilityId));
+      this.communityFacility = communityDetailDummy.filter((cummunity) => cummunity.id == communityFacilityId).pop();
+    },
 		getUseedText(isUse) {
 			return isUse ? "이용중" : ""
 		},
