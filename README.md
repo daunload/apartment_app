@@ -1,4 +1,4 @@
-# apartment_app
+# apartment_web-app
 
 ## Project setup
 ```

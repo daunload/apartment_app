@@ -1,55 +1,55 @@
 <template>
-    <div class="labelWrapper">
-				<p class="label">{{label}}</p>
-				<p class="text">{{text}}</p>
-			</div>
+  <div class="labelWrapper">
+    <p class="label">{{ label }}</p>
+    <p class="text">{{ text }}</p>
+  </div>
 </template>
 
 <script>
-import Vue from 'vue';
+import Vue from "vue";
 
 export default Vue.extend({
-    name: 'LabelWrapper',
-    props: {
-        label: {
-            type: String,
-						require: true,
-            default: ''
-        },
-        text: {
-            type: String,
-            require: true,
-						default: ''
-        },
-    }
-})
+  name: "LabelWrapper",
+  props: {
+    label: {
+      type: String,
+      require: true,
+      default: "",
+    },
+    text: {
+      type: String,
+      require: true,
+      default: "",
+    },
+  },
+});
 </script>
 
 <style scoped lang="scss">
 .labelWrapper {
-		display: flex;
-		flex-direction: row;
-		margin: 0 0 3.200vw 0;
+  display: flex;
+  flex-direction: row;
+  margin: 0 0 3.2vw 0;
 
-		.label {
-			width: 64px;
-			font-size: 3.467vw;
-			font-weight: normal;
-			font-stretch: normal;
-			font-style: normal;
-			line-height: 1.23;
-			letter-spacing: normal;
-			color: #222;
-		}
-		.text {
-			font-size: 13px;
-			font-weight: normal;
-			font-stretch: normal;
-			font-style: normal;
-			line-height: 1.31;
-			letter-spacing: -0.1px;
-			color: #222;
-			max-width: 66.933vw;
-		}
-	}
+  .label {
+    width: 64px;
+    font-size: 3.467vw;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.23;
+    letter-spacing: normal;
+    color: #222;
+  }
+  .text {
+    font-size: 13px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.31;
+    letter-spacing: -0.1px;
+    color: #222;
+    max-width: 66.933vw;
+  }
+}
 </style>
