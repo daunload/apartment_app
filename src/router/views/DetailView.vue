@@ -102,29 +102,34 @@ import ProgramCard from "@/components/DetailOptionCard.vue";
 import LabelWrapper from "@/components/DetailLabelWrapper.vue";
 
 export default {
-  name: "DetailView",
-  components: { CarouselSlide, ProgramCard, LabelWrapper },
-  data() {
-    return {
-      communityFacility: {},
-      guideToggle: false,
-    };
-  },
-  created() {
-    this.communityFacility = communityDetailDummy[0];
-  },
-  methods: {
-    getUseedText(isUse) {
-      return isUse ? "이용중" : "";
+		name: 'DetailView',
+		components: { CarouselSlide, ProgramCard, LabelWrapper },
+    data() {
+        return {
+            communityFacility: {},
+						guideToggle: false,
+        }
     },
-    getOpenTime(startTime, endTime) {
-      return `${startTime} ~ ${endTime}`;
-    },
-    clickedGuideToggle() {
-      this.guideToggle = !this.guideToggle;
-    },
+		beforeMount() {
+    this.getCommunityFacility();
   },
-};
+	methods: {
+		getCommunityFacility() {
+      const communityFacilityId = parseInt(this.$route.params.id);
+			console.log(communityDetailDummy.filter((cummunity) => cummunity.id == communityFacilityId));
+      this.communityFacility = communityDetailDummy.filter((cummunity) => cummunity.id == communityFacilityId).pop();
+    },
+		getUseedText(isUse) {
+			return isUse ? "이용중" : ""
+		},
+		getOpenTime(startTime, endTime) {
+			return `${startTime} ~ ${endTime}`
+		},
+		clickedGuideToggle() {
+			this.guideToggle = !this.guideToggle
+		}
+	}
+}
 </script>
 
 <style scoped lang="scss">

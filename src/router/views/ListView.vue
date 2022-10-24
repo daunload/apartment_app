@@ -1,23 +1,31 @@
 <template>
-  <div id="wrapper">
-    <template v-for="(facility, index) in communityFacilities">
-      <router-link to="/detailView" class="facility-info" :key="index">
-        <img :src="facility.thumbnail" class="facility-image" />
-        <span class="facility-name">{{ facility.title }}</span>
-      </router-link>
-    </template>
-  </div>
+    <div id="wrapper">
+        <template v-for="(facility, index) in communityFacilities">
+					<div class="facility-info" :key="index" @click="click(facility.id)">
+						<img :src="facility.thumbnail" class="facility-image" />
+						<span class="facility-name">{{ facility.title }}</span>
+					</div>
+        </template>
+    </div>
 </template>
 
 <script>
 import { communityListDummy } from "@/../public/DummyData";
 
 export default {
-  name: "ListView",
-  data() {
-    return {
-      communityFacilities: null,
-    };
+    name: 'ListView',
+    data() {
+        return {
+            communityFacilities: null
+        }
+    },
+    created() {
+			this.communityFacilities = communityListDummy
+    },
+		methods: {
+    click(id) {
+      this.$router.push(`/detailView/${id}`);
+    },
   },
   created() {
     this.communityFacilities = communityListDummy;
