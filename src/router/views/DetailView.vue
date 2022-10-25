@@ -4,93 +4,52 @@
     <p class="title">{{ communityFacility.title }}</p>
     <p class="description">{{ communityFacility.description }}</p>
 
-    <v-row class="guideWrapper">
-      <v-expansion-panels accordion>
-        <v-expansion-panel @click="clickedNoticeToggle">
-          <v-expansion-panel-header>
-            <p class="sub-title">공지사항</p>
-            <template v-slot:actions>
-              <img
-                :class="{ active: noticeToggle }"
-                class="moreImage"
-                src="./@/../../../assets/ic-set-more.png"
-                srcset="
-                  ./@/../../../assets/ic-set-more@2x.png 2x,
-                  ./@/../../../assets/ic-set-more@3x.png 3x
-                "
-              />
-            </template>
-          </v-expansion-panel-header>
-          <v-expansion-panel-content>
-            <p class="text">{{ communityFacility.notification }}</p>
-          </v-expansion-panel-content>
-        </v-expansion-panel>
-      </v-expansion-panels>
-    </v-row>
+    <ExpansionPanel @click="clickedNoticeToggle" :isToggled="noticeToggle">
+      <p slot="header" class="sub-title">공지사항</p>
+      <p slot="content" class="text">{{ communityFacility.notification }}</p>
+    </ExpansionPanel>
 
-    <v-row class="guideWrapper">
-      <v-expansion-panels accordion>
-        <v-expansion-panel @click="clickedGuideToggle">
-          <v-expansion-panel-header>
-            <p class="sub-title">운영안내</p>
-            <template v-slot:actions>
-              <img
-                :class="{ active: guideToggle }"
-                class="moreImage"
-                src="./@/../../../assets/ic-set-more.png"
-                srcset="
-                  ./@/../../../assets/ic-set-more@2x.png 2x,
-                  ./@/../../../assets/ic-set-more@3x.png 3x
-                "
-              />
-            </template>
-          </v-expansion-panel-header>
-          <v-expansion-panel-content>
-            <LabelWrapper
-              label="시설 위치 "
-              :text="communityFacility.location"
-            />
-            <LabelWrapper
-              label="운영 시간 "
-              :text="
-                getOpenTime(
-                  communityFacility.startTime,
-                  communityFacility.endTime
-                )
-              "
-            />
-            <LabelWrapper
-              label="휴게 시간 "
-              :text="
-                getOpenTime(
-                  communityFacility.breakStartTime,
-                  communityFacility.breakEndTime
-                )
-              "
-            />
-            <LabelWrapper label="휴일 " :text="communityFacility.holiday" />
-            <LabelWrapper label="문의 " :text="communityFacility.phone" />
-            <div class="line" />
-            <p class="subTitle">편의시설</p>
-            <div class="amenity">
-              <div
-                class="amenityWrapper"
-                v-for="(amenity, index) in communityFacility.amenities"
-                :key="index"
-              >
-                <div class="iconWrapper">
-                  <img class="icon" :src="amenity.icon" />
-                </div>
-                <p class="iconName">{{ amenity.name }}</p>
-              </div>
+    <ExpansionPanel @click="clickedGuideToggle" :isToggled="guideToggle">
+      <p slot="header" class="sub-title">운영안내</p>
+      <div slot="content">
+        <LabelWrapper label="시설 위치 " :text="communityFacility.location" />
+        <LabelWrapper
+          label="운영 시간 "
+          :text="
+            getOpenTime(communityFacility.startTime, communityFacility.endTime)
+          "
+        />
+        <LabelWrapper
+          label="휴게 시간 "
+          :text="
+            getOpenTime(
+              communityFacility.breakStartTime,
+              communityFacility.breakEndTime
+            )
+          "
+        />
+        <LabelWrapper label="휴일 " :text="communityFacility.holiday" />
+        <LabelWrapper label="문의 " :text="communityFacility.phone" />
+        <div class="line" />
+        <p class="subTitle">편의시설</p>
+        <div class="amenity">
+          <div
+            class="amenityWrapper"
+            v-for="(amenity, index) in communityFacility.amenities"
+            :key="index"
+          >
+            <div class="iconWrapper">
+              <img class="icon" :src="amenity.icon" />
             </div>
-            <div class="line" />
-            <p class="subTitle">주의사항</p>
-            <p class="text">주의사항 입니다.</p>
-          </v-expansion-panel-content>
-        </v-expansion-panel>
-      </v-expansion-panels>
-    </v-row>
+            <p class="iconName">{{ amenity.name }}</p>
+          </div>
+        </div>
+        <div class="line" />
+        <p class="subTitle">주의사항</p>
+        <p class="text">주의사항 입니다.</p>
+      </div>
+    </ExpansionPanel>
+
     <p class="subTitle">운영 프로그램</p>
     <div
       v-for="(program, index) in communityFacility.operationalPrograms"
@@ -114,10 +73,11 @@ import { communityDetailDummy } from "@/../public/DummyData";
 import CarouselSlide from "@/components/CarouselSlide.vue";
 import ProgramCard from "@/components/DetailOptionCard.vue";
 import LabelWrapper from "@/components/DetailLabelWrapper.vue";
+import ExpansionPanel from "@/components/ExpansionPanel.vue";
 
 export default {
   name: "DetailView",
-  components: { CarouselSlide, ProgramCard, LabelWrapper },
+  components: { CarouselSlide, ProgramCard, LabelWrapper, ExpansionPanel },
   data() {
     return {
       communityFacility: {},
@@ -158,31 +118,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.guideWrapper::v-deep .v-expansion-panel-content__wrap {
-  padding: 0 4vw 4vw;
-}
-.guideWrapper::v-deep .v-expansion-panel::before {
-  box-shadow: unset;
-}
-.guideWrapper::v-deep .v-expansion-panel-header {
-  min-height: unset;
-  padding: 4vw;
-  display: flex;
-  justify-content: space-between;
-}
-.guideWrapper::v-deep .v-expansion-panel-header__icon {
-  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1), visibility 0s;
-  transform: rotate(0deg);
-}
-.guideWrapper::v-deep .v-expansion-panel-header__icon .active {
-  transform: rotate(-90deg);
-}
-.guideWrapper::v-deep .v-expansion-panel--active > .v-expansion-panel-header {
-  min-height: unset;
-}
-.guideWrapper::v-deep .v-expansion-panel-header {
-  padding: 4vw;
-}
 .sub-title {
   display: flex;
   flex: none;
@@ -249,11 +184,6 @@ export default {
       display: flex;
       flex-direction: row;
     }
-  }
-  .guideWrapper {
-    border-radius: 1.333vw;
-    border: solid 0.133vw #c0cdf1;
-    margin: 0 0 4vw 0;
   }
   .label {
     width: 17.0667vw;
