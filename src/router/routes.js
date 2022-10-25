@@ -1,11 +1,7 @@
 const routes = [
   {
     path: "/",
-<<<<<<< HEAD
-    name: "paddingLayout",
-=======
     name: "PaddingLayout",
->>>>>>> 774775d94d82fc50d9b2fa4af7de98dcb32c9db2
     component: () => import("@/layouts/PaddingLayout.vue"),
     children: [
       {
@@ -33,19 +29,6 @@ const routes = [
         name: "selectProgram",
         component: () => import("@/router/views/DetailSelectProgram"),
       },
-<<<<<<< HEAD
-    ],
-  },
-  {
-    path: "/selectTime",
-    name: "selectTime",
-    component: () => import("@/router/views/DetailSelectTime"),
-  },
-  {
-    path: "/usageHistory",
-    name: "usageHistory",
-    component: () => import("@/router/views/UsageHistory"),
-=======
       {
         path: "/selectTime",
         name: "selectTime",
@@ -64,7 +47,6 @@ const routes = [
         component: () => import("@/router/views/UsageHistory"),
       },
     ],
->>>>>>> 774775d94d82fc50d9b2fa4af7de98dcb32c9db2
   },
 ];
 
