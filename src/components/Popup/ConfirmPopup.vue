@@ -1,8 +1,7 @@
 <template>
-  <div v-if="isOpen" class="wrapper">
-    <div class="overlay"></div>
-    <div class="dialog-wrapper">
-      <div class="dialog">
+  <dialog-card :isOpen="isOpen">
+    <div slot="dialog-content">
+      <div class="popup">
         <div class="modal-title">{{ title }}</div>
         <slot name="content"></slot>
         <div class="buttons">
@@ -15,12 +14,17 @@
         </div>
       </div>
     </div>
-  </div>
+  </dialog-card>
 </template>
 
 <script>
+import DialogCard from "@/components/Popup/DialogCard";
+
 export default {
   name: "ConfirmPopup",
+  components: {
+    DialogCard,
+  },
   props: {
     title: {
       type: String,
@@ -51,32 +55,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.overlay {
-  border-radius: inherit;
-  bottom: 0;
-  height: 100%;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  transition: inherit;
-  width: 100%;
-  will-change: opacity;
-  background-color: rgba(0, 0, 0, 0.4);
-}
-
-.dialog-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  left: 0;
-  position: fixed;
-  top: 0;
-  margin: 9.8667vw;
-  height: 100%;
-}
-
-.dialog {
+.popup {
   background-color: #fff;
   padding: 6.6667vw 5.3333vw;
   border-radius: 3.2vw;

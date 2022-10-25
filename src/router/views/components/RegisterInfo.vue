@@ -24,6 +24,11 @@ export default {
       require: true,
     },
   },
+  methods: {
+    confirm() {
+      this.$emit("update:confirm", false);
+    },
+  },
 };
 </script>
 

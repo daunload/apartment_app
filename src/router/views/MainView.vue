@@ -6,6 +6,12 @@
     <router-link to="/selectProgram/4">프로그램 선택</router-link>
     <router-link to="/selectTime">프로그램 시간 선택</router-link>
 
+    <template v-for="modalButton in 5">
+      <button @click="clickedButton(modalButton)" :key="modalButton">
+        {{ modalButton }}
+      </button>
+    </template>
+
     <!-- 커뮤니티 이용 신청 안내 팝업 -->
     <register-info :isOpen="button1" />
     <!-- 커뮤니티 시설 이용 등록 -->
@@ -41,8 +47,29 @@ export default {
       button2: false,
       button3: false,
       button4: false,
-      button5: true,
+      button5: false,
     };
+  },
+  methods: {
+    clickedButton(button) {
+      switch (button) {
+        case 1:
+          this.button1 = true;
+          break;
+        case 2:
+          this.button2 = true;
+          break;
+        case 3:
+          this.button3 = true;
+          break;
+        case 4:
+          this.button4 = true;
+          break;
+        case 5:
+          this.button5 = true;
+          break;
+      }
+    },
   },
 };
 </script>
