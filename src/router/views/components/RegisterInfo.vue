@@ -32,7 +32,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped lang="scss">
 .text {
   width: 100%;
   border-radius: 3.2vw;
