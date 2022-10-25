@@ -5,12 +5,14 @@
       <p class="description">{{ program.description }}</p>
     </div>
     <div v-for="(program, index) in program.programs" :key="index">
-      <ProgramCard
-        :leftTitle="program.name"
-        :leftBottomTitle="program.description"
-        :rightTitle="program.payment"
-        :rightBottomTitle="getRegularPayment(program.isRegularPayment)"
-      />
+      <detail-options-card>
+        <detail-option-card
+          :leftTitle="program.name"
+          :leftBottomTitle="program.description"
+          :rightTitle="program.payment"
+          :rightBottomTitle="getRegularPayment(program.isRegularPayment)"
+        ></detail-option-card>
+      </detail-options-card>
     </div>
   </div>
 </template>
@@ -18,11 +20,11 @@
 <script>
 import Vue from "vue";
 import { communityProgramDummy } from "@/../public/DummyData";
-import ProgramCard from "@/components/DetailOptionCard.vue";
+import DetailOptionsCard from "@/components/DetailOptionsCard.vue";
 
 export default Vue.extend({
   name: "DetailSelectProgram",
-  components: { ProgramCard },
+  components: { DetailOptionsCard },
   data() {
     return {
       program: {},
