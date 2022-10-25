@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: "ProgramCard",
+  name: "DetailOptionCard",
   props: {
     leftTitle: {
       type: String,
