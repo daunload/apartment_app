@@ -14,6 +14,8 @@
     <sign-up-popup :isOpen="button3" />
     <!-- 커뮤니티 시설 이용 등록  -->
     <register-locker-popup :isOpen="button4" />
+    <!-- 캘린더 모달 -->
+    <calendar-picker :isOpen="button5" />
   </div>
 </template>
 
@@ -22,6 +24,7 @@ import RegisterUserInfo from "@/router/views/components/RegisterUserInfo";
 import RegisterInfo from "@/router/views/components/RegisterInfo";
 import SignUpPopup from "@/router/views/components/SignUpPopup";
 import RegisterLockerPopup from "@/router/views/components/RegisterLockerPopup";
+import CalendarPicker from "@/components/DateSelecter/CalendarPicker";
 
 export default {
   name: "MainView",
@@ -30,6 +33,7 @@ export default {
     RegisterInfo,
     SignUpPopup,
     RegisterLockerPopup,
+    CalendarPicker,
   },
   data() {
     return {
@@ -37,6 +41,7 @@ export default {
       button2: false,
       button3: false,
       button4: false,
+      button5: true,
     };
   },
 };
