@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<style>
+<style scoped lang="scss">
 #padding-layout {
   padding: 0 4vw;
 }
