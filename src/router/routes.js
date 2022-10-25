@@ -1,7 +1,7 @@
 const routes = [
   {
     path: "/",
-    name: "paddingLayout",
+    name: "PaddingLayout",
     component: () => import("@/layouts/PaddingLayout.vue"),
     children: [
       {
@@ -29,17 +29,24 @@ const routes = [
         name: "selectProgram",
         component: () => import("@/router/views/DetailSelectProgram"),
       },
+      {
+        path: "/selectTime",
+        name: "selectTime",
+        component: () => import("@/router/views/DetailSelectTime"),
+      },
     ],
   },
   {
-    path: "/selectTime",
-    name: "selectTime",
-    component: () => import("@/router/views/DetailSelectTime"),
-  },
-  {
-    path: "/usageHistory",
-    name: "usageHistory",
-    component: () => import("@/router/views/UsageHistory"),
+    path: "/",
+    name: "DefaultLayout",
+    component: () => import("@/layouts/DefaultLayout.vue"),
+    children: [
+      {
+        path: "/usageHistory",
+        name: "usageHistory",
+        component: () => import("@/router/views/UsageHistory"),
+      },
+    ],
   },
 ];
 
