@@ -34,4 +34,28 @@ export default {
 .image {
   height: 53.333vw;
 }
+
+#wrapper::v-deep .v-.v-carousel__controls__item .v-icon {
+  font-size: 1.8667vw !important;
+  opacity: 1;
+  width: unset;
+  height: unset;
+}
+
+#wrapper::v-deep .v-btn:before {
+  opacity: 0;
+}
+#wrapper::v-deep .v-btn--icon.v-btn--active .v-icon {
+  color: #4c93ff;
+}
+#wrapper::v-deep .v-btn--icon.v-size--small .v-icon {
+  font-size: 1.8667vw !important;
+  opacity: 1;
+  width: unset;
+  height: unset;
+}
+#wrapper::v-deep .v-carousel__controls .v-btn--icon.v-size--small {
+  width: unset;
+  height: unset;
+}
 </style>
