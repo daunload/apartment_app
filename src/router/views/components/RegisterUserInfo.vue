@@ -118,6 +118,7 @@ export default {
   font-size: 3.4667vw;
   width: 12.8vw;
   color: #222222;
+  font-weight: bold;
 }
 
 .birthday {

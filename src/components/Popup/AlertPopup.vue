@@ -63,6 +63,7 @@ export default {
 .popup-title {
   width: 100%;
   text-align: center;
+  font-weight: bold;
   font-size: 4vw;
 }
 
@@ -80,6 +81,7 @@ export default {
     color: #4c93ff;
     padding: 4.2667vw 0;
     border-top: 0.2667vw solid #eee;
+    font-weight: bold;
   }
 }
 </style>

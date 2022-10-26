@@ -11,7 +11,7 @@
           <p class="selectDateButtonText">2022년 10월 8일</p>
         </div>
       </div>
-      <p>시간 선택</p>
+      <p class="timeArea-title">시간 선택</p>
       <div class="timeArea">
         <div v-for="(time, index) in times" :key="index" class="listWrapper">
           <TimeWrapper
@@ -68,7 +68,7 @@ export default Vue.extend({
 
     .selectDateText {
       font-size: 3.733vw;
-      font-weight: normal;
+      font-weight: bold;
       font-stretch: normal;
       font-style: normal;
       line-height: 1.21;
@@ -99,7 +99,7 @@ export default Vue.extend({
 
       .selectDateButtonText {
         font-size: 3.2vw;
-        font-weight: normal;
+        font-weight: bold;
         font-stretch: normal;
         font-style: normal;
         line-height: normal;
@@ -109,6 +109,10 @@ export default Vue.extend({
     }
   }
 
+  .timeArea-title {
+    font-weight: bold;
+    margin-bottom: 4vw;
+  }
   .timeArea {
     display: flex;
     flex-direction: row;
@@ -142,7 +146,7 @@ export default Vue.extend({
     }
     .currentTime {
       font-size: 3.467vw;
-      font-weight: normal;
+      font-weight: bold;
       font-stretch: normal;
       font-style: normal;
       line-height: 1;
@@ -158,7 +162,7 @@ export default Vue.extend({
 
       .confirmButtonText {
         font-size: 3.2vw;
-        font-weight: normal;
+        font-weight: bold;
         font-stretch: normal;
         font-style: normal;
         line-height: 1.08;

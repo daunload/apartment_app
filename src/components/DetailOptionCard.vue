@@ -78,6 +78,7 @@ export default {
 
   .top {
     font-size: 3.4vw;
+    font-weight: bold;
   }
   .bottom {
     margin-top: 1.8vw;

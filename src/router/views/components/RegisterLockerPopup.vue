@@ -47,7 +47,7 @@
               </div>
             </div>
             <div class="right-text">
-              <span class="top">{{ "월 5,500원" }}</span>
+              <span class="top bold">{{ "월 5,500원" }}</span>
               <div class="bottom">{{ "정기결제" }}</div>
             </div>
           </div>
@@ -109,6 +109,7 @@ export default {
 
 .left-text {
   display: flex;
+  font-weight: bold;
   flex-direction: column;
 }
 
@@ -125,7 +126,7 @@ export default {
 .top {
   font-size: 3.4vw;
 }
-.bottom {
-  margin-top: 1.8vw;
+.bold {
+  font-weight: bold;
 }
 </style>
