@@ -25,12 +25,27 @@
           <div class="left-text">성별</div>
           <div class="gender-selecter">
             <div class="man">
-              <img src="@/assets/ic-radio-b-off.svg" />
+              <div class="gender-toggle" @click="setGender('man')">
+                <img v-if="gender === 'man'" src="@/assets/ic-radio-b-on.svg" />
+                <img
+                  v-else-if="gender === 'woman'"
+                  src="@/assets/ic-radio-b-off.svg"
+                />
+              </div>
               남
             </div>
             <div class="woman">
-              <img src="@/assets/ic-radio-b-off.svg" />
-              여
+              <div class="gender-toggle" @click="setGender('woman')">
+                <img
+                  v-if="gender === 'man'"
+                  src="@/assets/ic-radio-b-off.svg"
+                />
+                <img
+                  v-else-if="gender === 'woman'"
+                  src="@/assets/ic-radio-b-on.svg"
+                />
+                여
+              </div>
             </div>
           </div>
         </div>
@@ -61,12 +76,20 @@ export default {
       require: true,
     },
   },
+  data() {
+    return {
+      gender: "man",
+    };
+  },
   methods: {
     confirm() {
       this.$emit("update:isOpen", false);
     },
     cancel() {
       this.$emit("update:isOpen", false);
+    },
+    setGender(gender) {
+      this.gender = gender;
     },
   },
 };
@@ -131,6 +154,13 @@ export default {
 
     & .man {
       margin-right: 7.7333vw;
+      display: flex;
+      align-items: center;
+    }
+
+    & .woman {
+      display: flex;
+      align-items: center;
     }
   }
 }
