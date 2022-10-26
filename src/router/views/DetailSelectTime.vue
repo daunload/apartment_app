@@ -1,34 +1,37 @@
 <template>
-  <div class="container">
-    <div class="headerWrapper">
-      <p class="selectDateText">이용일 선택</p>
-      <p class="description">
-        탁구장, 라켓과 공 대여는 관리사무소에 문의해주세요
-      </p>
-      <div class="selectDateButton">
-        <p class="selectDateButtonText">2022년 10월 8일</p>
+  <div>
+    <TopTitleBar :title="'탁구장'" />
+    <div class="container">
+      <div class="headerWrapper">
+        <p class="selectDateText">이용일 선택</p>
+        <p class="description">
+          탁구장, 라켓과 공 대여는 관리사무소에 문의해주세요
+        </p>
+        <div class="selectDateButton">
+          <p class="selectDateButtonText">2022년 10월 8일</p>
+        </div>
       </div>
-    </div>
-    <p>시간 선택</p>
-    <div class="timeArea">
-      <div v-for="(time, index) in times" :key="index" class="listWrapper">
-        <TimeWrapper :timeText="time" />
+      <p>시간 선택</p>
+      <div class="timeArea">
+        <div v-for="(time, index) in times" :key="index" class="listWrapper">
+          <TimeWrapper :timeText="time" />
+        </div>
+        <div
+          v-for="(time, index) in times"
+          :key="`${index}-selected`"
+          class="listWrapper"
+        >
+          <TimeWrapper :timeText="time" :isSelect="true" />
+        </div>
       </div>
-      <div
-        v-for="(time, index) in times"
-        :key="`${index}-select`"
-        class="listWrapper"
-      >
-        <TimeWrapper :timeText="time" :isSelect="true" />
-      </div>
-    </div>
-    <div class="currentTimeContainer">
-      <div>
-        <p class="currentDate">2022년 10월 8일</p>
-        <p class="currentTime">09:00~09:30</p>
-      </div>
-      <div class="confirmButton">
-        <p class="confirmButtonText">등록하기</p>
+      <div class="currentTimeContainer">
+        <div>
+          <p class="currentDate">2022년 10월 8일</p>
+          <p class="currentTime">09:00~09:30</p>
+        </div>
+        <div class="confirmButton">
+          <p class="confirmButtonText">등록하기</p>
+        </div>
       </div>
     </div>
   </div>
@@ -38,10 +41,11 @@
 import Vue from "vue";
 import TimeWrapper from "@/components/TimeWrapper.vue";
 import { timeDummy } from "@/../public/DummyData";
+import TopTitleBar from "@/components/TopTitleBar.vue";
 
 export default Vue.extend({
   name: "DetailSelectTime",
-  components: { TimeWrapper },
+  components: { TimeWrapper, TopTitleBar },
   data() {
     return {
       times: timeDummy,
@@ -52,7 +56,7 @@ export default Vue.extend({
 
 <style scoped lang="scss">
 .container {
-  padding: 4vw 0;
+  padding: 4vw;
   .headerWrapper {
     display: flex;
     flex-direction: column;
