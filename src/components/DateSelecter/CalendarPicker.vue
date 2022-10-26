@@ -110,7 +110,9 @@ export default {
   },
   computed: {
     dates() {
-      return this.selectDays.map((day) => dayjs(day.date).format("YYYY-MM-DD"));
+      return this.selectDays.map((day) =>
+        dayjs(day.date).format("YYYY년 MM월 DD일")
+      );
     },
     attributes() {
       return this.dates.map((date) => ({
