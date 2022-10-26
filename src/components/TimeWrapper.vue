@@ -1,5 +1,12 @@
 <template>
-  <div class="timeContainer" :class="[isSelect ? 'select' : 'notSelect']">
+  <div
+    class="timeContainer"
+    :class="[
+      isSelect ? 'select' : 'notSelect',
+      isActive ? 'active' : 'disable',
+    ]"
+    @click="clicked"
+  >
     <p class="timeText" :class="[isSelect ? 'selectText' : 'notSelectText']">
       {{ timeText }}
     </p>
@@ -12,6 +19,11 @@ import Vue from "vue";
 export default Vue.extend({
   name: "TimeWrapper",
   props: {
+    isActive: {
+      type: Boolean,
+      require: true,
+      default: true,
+    },
     timeText: {
       type: String,
       require: true,
@@ -23,6 +35,13 @@ export default Vue.extend({
       default: false,
     },
   },
+  methods: {
+    clicked() {
+      if (this.isActive) {
+        this.$emit("clicked");
+      }
+    },
+  },
 });
 </script>
 
@@ -32,14 +51,18 @@ export default Vue.extend({
   height: 8.267vw;
   padding: 2.667vw 1.333vw;
   border-radius: 1.867vw;
-  border: solid 1px #4c93ff;
+  border: solid 0.2667vw #4c93ff;
   margin: 1.067vw 0.8vw;
 
-  &.select {
+  &.active.select {
     background-color: #4c93ff;
   }
-  &.notSelect {
+  &.active.notSelect {
     background-color: #ffffff;
+  }
+  &.disable {
+    background-color: #efefef;
+    border: unset;
   }
 
   .timeText {
@@ -48,7 +71,7 @@ export default Vue.extend({
     font-stretch: normal;
     font-style: normal;
     line-height: 0.92;
-    letter-spacing: -0.5px;
+    letter-spacing: -0.1333vw;
     text-align: center;
 
     &.selectText {
@@ -56,6 +79,12 @@ export default Vue.extend({
     }
     &.notSelectText {
       color: #4c93ff;
+    }
+  }
+
+  &.disable {
+    & .timeText {
+      color: #787878;
     }
   }
 }

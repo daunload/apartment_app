@@ -14,14 +14,12 @@
       <p>시간 선택</p>
       <div class="timeArea">
         <div v-for="(time, index) in times" :key="index" class="listWrapper">
-          <TimeWrapper :timeText="time" />
-        </div>
-        <div
-          v-for="(time, index) in times"
-          :key="`${index}-selected`"
-          class="listWrapper"
-        >
-          <TimeWrapper :timeText="time" :isSelect="true" />
+          <TimeWrapper
+            :timeText="time"
+            :isActive="index < 10"
+            :isSelect="selectedTimeIndex === index"
+            @clicked="activeTime(index)"
+          />
         </div>
       </div>
       <div class="currentTimeContainer">
@@ -49,7 +47,13 @@ export default Vue.extend({
   data() {
     return {
       times: timeDummy,
+      selectedTimeIndex: null,
     };
+  },
+  methods: {
+    activeTime(timeIndex) {
+      this.selectedTimeIndex = timeIndex;
+    },
   },
 });
 </script>
