@@ -56,6 +56,7 @@ export default {
   height: 29.8vw;
 }
 .facility-name {
+  font-weight: bold;
   font-size: 3.7vw;
   line-height: 4.2vw;
   margin-bottom: 6.4vw;

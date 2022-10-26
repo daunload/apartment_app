@@ -6,7 +6,11 @@
       <usage-info>
         <div class="title" slot="title">헬스장 월 이용료</div>
         <div slot="info">
-          <usage-info-text :leftText="'금액'" :rightText="'월 10,000원'" />
+          <usage-info-text
+            :leftText="'금액'"
+            :rightText="'월 10,000원'"
+            :isRightBold="true"
+          />
           <usage-info-text
             :leftText="'유효기간'"
             :rightText="'10월9일 ~ 10월31일'"
@@ -38,7 +42,11 @@
       <div class="usage-info-wrapper">
         <usage-info>
           <div slot="info">
-            <usage-info-text :leftText="'이용 상태'" :rightText="'이용중'" />
+            <usage-info-text
+              :leftText="'이용 상태'"
+              :rightText="'이용중'"
+              :isRightBold="true"
+            />
             <usage-info-text
               :leftText="'최초 신청일'"
               :rightText="'2022.10.07 09:00'"
@@ -56,7 +64,7 @@
         <terms-check-box />
       </div>
     </div>
-    <BottomConfirm :confirmText="'이용 신청하기'" />
+    <BottomConfirm :confirmText="'이용 선택하기'" />
   </div>
 </template>
 
@@ -88,6 +96,7 @@ export default {
 }
 .title {
   font-size: 3.7333vw;
+  font-weight: bold;
   margin-bottom: 5.3333vw;
 }
 
