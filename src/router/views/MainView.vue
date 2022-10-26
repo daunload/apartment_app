@@ -6,11 +6,11 @@
     <router-link to="/selectProgram/4">프로그램 선택</router-link>
     <router-link to="/selectTime">프로그램 시간 선택</router-link>
 
-    <template v-for="modalButton in 5">
-      <button @click="clickedButton(modalButton)" :key="modalButton">
-        {{ modalButton }}
-      </button>
-    </template>
+    <v-btn @click="button1 = true"> 커뮤니티 이용 신청 안내 팝업 </v-btn>
+    <v-btn @click="button2 = true"> 커뮤니티 시설 사용자 정보 등록 </v-btn>
+    <v-btn @click="button3 = true"> 커뮤니티 시설 이용 등록 </v-btn>
+    <v-btn @click="button4 = true"> 커뮤니티 시설 이용 등록 (사물함) </v-btn>
+    <v-btn @click="button5 = true">달력</v-btn>
 
     <!-- 커뮤니티 이용 신청 안내 팝업 -->
     <register-info :isOpen="button1" />
