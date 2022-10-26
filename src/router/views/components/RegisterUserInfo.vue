@@ -25,12 +25,27 @@
           <div class="left-text">성별</div>
           <div class="gender-selecter">
             <div class="man">
-              <img src="@/assets/ic-radio-b-off.svg" />
-              남
+              <div class="gender-toggle" @click="setGender('man')">
+                <img v-if="gender === 'man'" src="@/assets/ic-radio-b-on.svg" />
+                <img
+                  v-else-if="gender === 'woman'"
+                  src="@/assets/ic-radio-b-off.svg"
+                />
+              </div>
+              <span class="gender-text">남</span>
             </div>
             <div class="woman">
-              <img src="@/assets/ic-radio-b-off.svg" />
-              여
+              <div class="gender-toggle" @click="setGender('woman')">
+                <img
+                  v-if="gender === 'man'"
+                  src="@/assets/ic-radio-b-off.svg"
+                />
+                <img
+                  v-else-if="gender === 'woman'"
+                  src="@/assets/ic-radio-b-on.svg"
+                />
+              </div>
+              <span class="gender-text">여</span>
             </div>
           </div>
         </div>
@@ -61,12 +76,20 @@ export default {
       require: true,
     },
   },
+  data() {
+    return {
+      gender: "man",
+    };
+  },
   methods: {
     confirm() {
       this.$emit("update:isOpen", false);
     },
     cancel() {
       this.$emit("update:isOpen", false);
+    },
+    setGender(gender) {
+      this.gender = gender;
     },
   },
 };
@@ -129,8 +152,20 @@ export default {
   & .gender-selecter {
     display: flex;
 
+    & .gender-text {
+      display: flex;
+      align-items: center;
+      font-size: 3.4667vw;
+    }
+
     & .man {
+      display: flex;
+      height: 4.8vw;
       margin-right: 7.7333vw;
+    }
+    & .woman {
+      display: flex;
+      height: 4.8vw;
     }
   }
 }
@@ -141,5 +176,6 @@ export default {
 
 .phone-number {
   display: flex;
+  font-size: 3.4667vw;
 }
 </style>

@@ -56,6 +56,7 @@
         <terms-check-box />
       </div>
     </div>
+    <BottomConfirm :confirmText="'이용 신청하기'" />
   </div>
 </template>
 
@@ -66,6 +67,7 @@ import MonthSelecter from "@/components/DateSelecter/MonthSelecter.vue";
 import InfoCard from "@/components/InfoCard.vue";
 import TermsCheckBox from "@/components/TermsCheckBox.vue";
 import TopTitleBar from "@/components/TopTitleBar.vue";
+import BottomConfirm from "@/router/views/components/BottomConfirm";
 
 export default {
   name: "DetailRegister",
@@ -76,6 +78,7 @@ export default {
     InfoCard,
     TermsCheckBox,
     TopTitleBar,
+    BottomConfirm,
   },
 };
 </script>
@@ -90,7 +93,7 @@ export default {
 
 .checkbox-wrapper {
   margin-top: 13.3333vw;
-  margin-bottom: 10.93333vw;
+  padding-bottom: 10.93333vw;
 }
 
 .usage-info-wrapper {

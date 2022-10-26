@@ -16,7 +16,11 @@
         <div v-for="(time, index) in times" :key="index" class="listWrapper">
           <TimeWrapper :timeText="time" />
         </div>
-        <div v-for="(time, index) in times" :key="index" class="listWrapper">
+        <div
+          v-for="(time, index) in times"
+          :key="`${index}-selected`"
+          class="listWrapper"
+        >
           <TimeWrapper :timeText="time" :isSelect="true" />
         </div>
       </div>
