@@ -9,8 +9,22 @@
         :locale="{ id: 'en', firstDayOfWeek: 2, masks: { weekdays: 'WWW' } }"
         @dayclick="onDayClick"
       >
-        <p>{{ selectDays }}</p>
       </Calendar>
+      <div class="footer">
+        <div class="selected-date-text">
+          {{ selectedDayText }}
+        </div>
+        <div class="buttons">
+          <button class="cancel" @click="cancel">취소</button>
+          <button
+            class="apply"
+            :class="{ active: isSelected }"
+            @click="confirm"
+          >
+            적용
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -30,6 +44,7 @@ export default {
   },
   data() {
     return {
+      selectedDayText: "",
       selectDays: [],
       // attributes: [
       //   {
@@ -102,6 +117,15 @@ export default {
         dates: date,
       }));
     },
+    isSelected() {
+      return this.selectDays.length > 0;
+    },
+  },
+  watch: {
+    selectDays() {
+      //기간 반환하는 함수
+      this.selectedDayText = "";
+    },
   },
   methods: {
     onDayClick(day) {
@@ -114,6 +138,12 @@ export default {
           date: day.date,
         });
       }
+    },
+    cancel() {
+      this.$emit("update:isOpen", false);
+    },
+    confirm() {
+      this.$emit("update:isOpen", false);
     },
   },
 };
@@ -147,5 +177,51 @@ export default {
 }
 #popup::v-deep .vc-arrow {
   backdrop-filter: #000;
+}
+
+.popup-wrapper::v-deep .vc-container {
+  border-radius: unset;
+  border-top-left-radius: 1.3333vw;
+  border-top-right-radius: 1.3333vw;
+  border: unset;
+}
+.popup-wrapper::v-deep .vc-weeks {
+  margin: 0 4vw;
+  padding: 0;
+  border-bottom: solid 0.2667vw #f4f4f4;
+}
+.footer {
+  background-color: #fff;
+  height: 14.1333vw;
+  width: 100%;
+  color: #787878;
+  display: flex;
+  justify-content: space-between;
+  border-bottom-left-radius: 1.3333vw;
+  border-bottom-right-radius: 1.3333vw;
+  & .selected-date-text {
+    max-width: 45.3333vw;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 3.4667vw;
+    color: #222;
+  }
+  & .buttons {
+    display: flex;
+  }
+  & button {
+    font-weight: bold;
+    display: flex;
+    padding: 0 3.2vw;
+    align-items: center;
+    font-size: 3.4667vw;
+    &.apply {
+      margin-right: 2.1333vw;
+    }
+    &.active.apply {
+      color: #4c93ff;
+    }
+  }
 }
 </style>
