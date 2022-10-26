@@ -13,13 +13,13 @@
     </template>
 
     <!-- 커뮤니티 이용 신청 안내 팝업 -->
-    <register-info :isOpen="button1" />
+    <register-info :isOpen.sync="button1" />
     <!-- 커뮤니티 시설 이용 등록 -->
-    <register-user-info :isOpen="button2" />
+    <register-user-info :isOpen.sync="button2" />
     <!-- 커뮤니티 시설 이용 등록  -->
-    <sign-up-popup :isOpen="button3" />
+    <sign-up-popup :isOpen.sync="button3" />
     <!-- 커뮤니티 시설 이용 등록  -->
-    <register-locker-popup :isOpen="button4" />
+    <register-locker-popup :isOpen.sync="button4" />
     <!-- 캘린더 모달 -->
     <calendar-picker :isOpen="button5" />
   </div>

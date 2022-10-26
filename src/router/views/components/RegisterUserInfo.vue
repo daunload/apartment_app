@@ -5,6 +5,8 @@
       :isOpen="isOpen"
       :cancelText="'취소'"
       :confirmText="'저장'"
+      @clicked-confirm="confirm"
+      @clicked-cancel="cancel"
     >
       <div slot="content">
         <div class="bottom-title">
@@ -57,6 +59,14 @@ export default {
     isOpen: {
       type: Boolean,
       require: true,
+    },
+  },
+  methods: {
+    confirm() {
+      this.$emit("update:isOpen", false);
+    },
+    cancel() {
+      this.$emit("update:isOpen", false);
     },
   },
 };

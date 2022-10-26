@@ -3,6 +3,7 @@
     :isOpen="isOpen"
     :title="'커뮤니티 이용 신청 안내'"
     :confirmText="'확인'"
+    @clicked-confirm="closePopup"
   >
     <div slot="content" class="text">
       이용하려면 관리사무소를 방문하여 사진 촬영 및 출입수단 등록이 필요합니다.
@@ -25,8 +26,8 @@ export default {
     },
   },
   methods: {
-    confirm() {
-      this.$emit("update:confirm", false);
+    closePopup() {
+      this.$emit("update:isOpen", false);
     },
   },
 };

@@ -1,6 +1,6 @@
 <template>
   <div id="wrapper">
-    <v-carousel :show-arrows="false" hide-delimiter-background>
+    <v-carousel :show-arrows="false" hide-delimiter-background cycle>
       <v-carousel-item v-for="(image, index) in images" :key="index">
         <img class="image" :src="image" />
       </v-carousel-item>

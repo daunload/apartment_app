@@ -32,7 +32,7 @@ export default Vue.extend({
   margin: 0 0 3.2vw 0;
 
   .label {
-    width: 64px;
+    width: 17.0667vw;
     font-size: 3.467vw;
     font-weight: normal;
     font-stretch: normal;
@@ -42,7 +42,7 @@ export default Vue.extend({
     color: #222;
   }
   .text {
-    font-size: 13px;
+    font-size: 3.4667vw;
     font-weight: normal;
     font-stretch: normal;
     font-style: normal;
