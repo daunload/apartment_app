@@ -16,7 +16,7 @@
         </div>
         <div class="birthday">
           <div class="left-text">생년월일</div>
-          <div class="birthday-picker">
+          <div class="birthday-picker" @click="openDatePicker">
             <img src="@/assets/ic-filter-calendar.svg" />
             <div class="placeholder">날짜 선택</div>
           </div>
@@ -56,6 +56,7 @@
         <div class="check-box-wrapper">
           <terms-check-box />
         </div>
+        <calendar-picker :isOpen.sync="isOpenDatePicker" />
       </div>
     </confirm-popup>
   </div>
@@ -64,11 +65,13 @@
 <script>
 import ConfirmPopup from "@/components/Popup/ConfirmPopup";
 import TermsCheckBox from "@/components/TermsCheckBox";
+import CalendarPicker from "@/components/DateSelecter/CalendarPicker";
 
 export default {
   components: {
     ConfirmPopup,
     TermsCheckBox,
+    CalendarPicker,
   },
   props: {
     isOpen: {
@@ -79,6 +82,7 @@ export default {
   data() {
     return {
       gender: "man",
+      isOpenDatePicker: false,
     };
   },
   methods: {
@@ -90,6 +94,9 @@ export default {
     },
     setGender(gender) {
       this.gender = gender;
+    },
+    openDatePicker() {
+      this.isOpenDatePicker = true;
     },
   },
 };
