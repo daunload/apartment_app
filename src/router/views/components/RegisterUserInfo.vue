@@ -32,7 +32,7 @@
                   src="@/assets/ic-radio-b-off.svg"
                 />
               </div>
-              남
+              <span class="gender-text">남</span>
             </div>
             <div class="woman">
               <div class="gender-toggle" @click="setGender('woman')">
@@ -44,8 +44,8 @@
                   v-else-if="gender === 'woman'"
                   src="@/assets/ic-radio-b-on.svg"
                 />
-                여
               </div>
+              <span class="gender-text">여</span>
             </div>
           </div>
         </div>
@@ -152,15 +152,20 @@ export default {
   & .gender-selecter {
     display: flex;
 
-    & .man {
-      margin-right: 7.7333vw;
+    & .gender-text {
       display: flex;
       align-items: center;
+      font-size: 3.4667vw;
     }
 
+    & .man {
+      display: flex;
+      height: 4.8vw;
+      margin-right: 7.7333vw;
+    }
     & .woman {
       display: flex;
-      align-items: center;
+      height: 4.8vw;
     }
   }
 }
@@ -171,5 +176,6 @@ export default {
 
 .phone-number {
   display: flex;
+  font-size: 3.4667vw;
 }
 </style>
