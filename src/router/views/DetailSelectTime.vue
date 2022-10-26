@@ -115,6 +115,11 @@ export default Vue.extend({
     flex-wrap: wrap;
     margin-bottom: 12.8vw;
   }
+
+  .listWrapper {
+    width: 25%;
+  }
+
   .currentTimeContainer {
     height: 20.8vw;
     padding: 5.867vw 4vw;
