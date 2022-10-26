@@ -6,7 +6,13 @@
       :class="[months.length > 1 ? 'right' : 'center']"
     >
       <template v-for="(month, index) in months">
-        <button ref="month-button" class="month-button" :key="index">
+        <button
+          ref="month-button"
+          class="month-button"
+          :key="index"
+          @click="selectMonth(index)"
+          :class="{ active: selectedMonthIndex === index }"
+        >
           <div class="month-text">{{ month }}</div>
         </button>
       </template>
@@ -23,8 +29,15 @@ export default {
       require: true,
     },
   },
-  mounted() {
-    this.$refs["month-button"][0].classList.add("active");
+  data() {
+    return {
+      selectedMonthIndex: 0,
+    };
+  },
+  methods: {
+    selectMonth(selectedIndex) {
+      this.selectedMonthIndex = selectedIndex;
+    },
   },
 };
 </script>
