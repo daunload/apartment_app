@@ -1,9 +1,12 @@
 <template>
-  <div id="wrapper">
-    <div v-for="(facility, _index) in communityFacilities" :key="_index">
-      <div class="facility-info" @click="click(facility.id)">
-        <img :src="facility.thumbnail" class="facility-image" />
-        <span class="facility-name">{{ facility.title }}</span>
+  <div>
+    <TopTitleBar :title="'커뮤니티 시설'" />
+    <div id="wrapper">
+      <div v-for="(facility, _index) in communityFacilities" :key="_index">
+        <div class="facility-info" @click="click(facility.id)">
+          <img :src="facility.thumbnail" class="facility-image" />
+          <span class="facility-name">{{ facility.title }}</span>
+        </div>
       </div>
     </div>
   </div>
@@ -11,9 +14,13 @@
 
 <script>
 import { communityListDummy } from "@/../public/DummyData";
+import TopTitleBar from "@/components/TopTitleBar.vue";
 
 export default {
   name: "ListView",
+  components: {
+    TopTitleBar,
+  },
   data() {
     return {
       communityFacilities: null,
@@ -36,6 +43,7 @@ export default {
   flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 8vw;
+  padding: 0 4vw;
 }
 .facility-info {
   display: flex;

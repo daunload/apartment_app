@@ -1,16 +1,19 @@
 <template>
-  <div class="container">
-    <div class="titleWrapper">
-      <p class="title">{{ program.name }}</p>
-      <p class="description">{{ program.description }}</p>
-    </div>
-    <div v-for="(program, index) in program.programs" :key="index">
-      <detail-option-card
-        :leftTitle="program.name"
-        :leftBottomTitle="program.description"
-        :rightTitle="program.payment"
-        :rightBottomTitle="getRegularPayment(program.isRegularPayment)"
-      ></detail-option-card>
+  <div>
+    <TopTitleBar :title="program.name" />
+    <div class="container">
+      <div class="titleWrapper">
+        <p class="title">{{ program.name }}</p>
+        <p class="description">{{ program.description }}</p>
+      </div>
+      <div v-for="(program, index) in program.programs" :key="index">
+        <detail-option-card
+          :leftTitle="program.name"
+          :leftBottomTitle="program.description"
+          :rightTitle="program.payment"
+          :rightBottomTitle="getRegularPayment(program.isRegularPayment)"
+        ></detail-option-card>
+      </div>
     </div>
   </div>
 </template>
@@ -19,10 +22,11 @@
 import Vue from "vue";
 import { communityProgramDummy } from "@/../public/DummyData";
 import DetailOptionCard from "@/components/DetailOptionCard.vue";
+import TopTitleBar from "@/components/TopTitleBar.vue";
 
 export default Vue.extend({
   name: "DetailSelectProgram",
-  components: { DetailOptionCard },
+  components: { DetailOptionCard, TopTitleBar },
   data() {
     return {
       program: {},
@@ -47,7 +51,7 @@ export default Vue.extend({
 
 <style scoped lang="scss">
 .container {
-  padding: 8vw 0;
+  padding: 8vw 4vw;
 
   .titleWrapper {
     display: flex;

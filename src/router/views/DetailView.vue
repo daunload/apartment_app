@@ -1,68 +1,74 @@
 <template>
-  <div class="container">
-    <CarouselSlide :images="communityFacility.images" />
-    <p class="title">{{ communityFacility.title }}</p>
-    <p class="description">{{ communityFacility.description }}</p>
+  <div>
+    <TopTitleBar :title="communityFacility.title" />
+    <div class="container">
+      <CarouselSlide :images="communityFacility.images" />
+      <p class="title">{{ communityFacility.title }}</p>
+      <p class="description">{{ communityFacility.description }}</p>
 
-    <ExpansionPanel @click="clickedNoticeToggle" :isToggled="noticeToggle">
-      <p slot="header" class="sub-title">공지사항</p>
-      <p slot="content" class="text">{{ communityFacility.notification }}</p>
-    </ExpansionPanel>
+      <ExpansionPanel @click="clickedNoticeToggle" :isToggled="noticeToggle">
+        <p slot="header" class="sub-title">공지사항</p>
+        <p slot="content" class="text">{{ communityFacility.notification }}</p>
+      </ExpansionPanel>
 
-    <ExpansionPanel @click="clickedGuideToggle" :isToggled="guideToggle">
-      <p slot="header" class="sub-title">운영안내</p>
-      <div slot="content">
-        <LabelWrapper label="시설 위치 " :text="communityFacility.location" />
-        <LabelWrapper
-          label="운영 시간 "
-          :text="
-            getOpenTime(communityFacility.startTime, communityFacility.endTime)
-          "
-        />
-        <LabelWrapper
-          label="휴게 시간 "
-          :text="
-            getOpenTime(
-              communityFacility.breakStartTime,
-              communityFacility.breakEndTime
-            )
-          "
-        />
-        <LabelWrapper label="휴일 " :text="communityFacility.holiday" />
-        <LabelWrapper label="문의 " :text="communityFacility.phone" />
-        <div class="line" />
-        <p class="subTitle">편의시설</p>
-        <div class="amenity">
-          <div
-            class="amenityWrapper"
-            v-for="(amenity, index) in communityFacility.amenities"
-            :key="index"
-          >
-            <div class="iconWrapper">
-              <img class="icon" :src="amenity.icon" />
+      <ExpansionPanel @click="clickedGuideToggle" :isToggled="guideToggle">
+        <p slot="header" class="sub-title">운영안내</p>
+        <div slot="content">
+          <LabelWrapper label="시설 위치 " :text="communityFacility.location" />
+          <LabelWrapper
+            label="운영 시간 "
+            :text="
+              getOpenTime(
+                communityFacility.startTime,
+                communityFacility.endTime
+              )
+            "
+          />
+          <LabelWrapper
+            label="휴게 시간 "
+            :text="
+              getOpenTime(
+                communityFacility.breakStartTime,
+                communityFacility.breakEndTime
+              )
+            "
+          />
+          <LabelWrapper label="휴일 " :text="communityFacility.holiday" />
+          <LabelWrapper label="문의 " :text="communityFacility.phone" />
+          <div class="line" />
+          <p class="subTitle">편의시설</p>
+          <div class="amenity">
+            <div
+              class="amenityWrapper"
+              v-for="(amenity, index) in communityFacility.amenities"
+              :key="index"
+            >
+              <div class="iconWrapper">
+                <img class="icon" :src="amenity.icon" />
+              </div>
+              <p class="iconName">{{ amenity.name }}</p>
             </div>
-            <p class="iconName">{{ amenity.name }}</p>
           </div>
+          <div class="line" />
+          <p class="subTitle">주의사항</p>
+          <p class="text">주의사항 입니다.</p>
         </div>
-        <div class="line" />
-        <p class="subTitle">주의사항</p>
-        <p class="text">주의사항 입니다.</p>
-      </div>
-    </ExpansionPanel>
+      </ExpansionPanel>
 
-    <p class="subTitle">운영 프로그램</p>
-    <div
-      v-for="(program, index) in communityFacility.operationalPrograms"
-      :key="index"
-    >
-      <div @click="click(program.programId)">
-        <ProgramCard
-          :leftTitle="program.name"
-          :leftBottomTitle="program.description"
-          :rightTitle="program.payment"
-          :useText="getUseedText(program.isUse)"
-          :rightBottomTitle="getRegularPayment(program.isRegularPayment)"
-        />
+      <p class="subTitle">운영 프로그램</p>
+      <div
+        v-for="(program, index) in communityFacility.operationalPrograms"
+        :key="index"
+      >
+        <div @click="click(program.programId)">
+          <ProgramCard
+            :leftTitle="program.name"
+            :leftBottomTitle="program.description"
+            :rightTitle="program.payment"
+            :useText="getUseedText(program.isUse)"
+            :rightBottomTitle="getRegularPayment(program.isRegularPayment)"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -74,10 +80,17 @@ import CarouselSlide from "@/components/CarouselSlide.vue";
 import ProgramCard from "@/components/DetailOptionCard.vue";
 import LabelWrapper from "@/components/DetailLabelWrapper.vue";
 import ExpansionPanel from "@/components/ExpansionPanel.vue";
+import TopTitleBar from "@/components/TopTitleBar.vue";
 
 export default {
   name: "DetailView",
-  components: { CarouselSlide, ProgramCard, LabelWrapper, ExpansionPanel },
+  components: {
+    CarouselSlide,
+    ProgramCard,
+    LabelWrapper,
+    ExpansionPanel,
+    TopTitleBar,
+  },
   data() {
     return {
       communityFacility: {},
@@ -130,7 +143,7 @@ export default {
   color: #0f1e44;
 }
 .container {
-  padding: 4vw 0;
+  padding: 4vw 4.053vw;
   .line {
     height: 1px;
     border: solid 0.5px #c0cdf1;
