@@ -31,6 +31,7 @@
 
 <script>
 import Calendar from "v-calendar/lib/components/calendar.umd";
+import dayjs from "dayjs";
 
 export default {
   props: {
@@ -109,7 +110,7 @@ export default {
   },
   computed: {
     dates() {
-      return this.selectDays.map((day) => day.date);
+      return this.selectDays.map((day) => dayjs(day.date).format("YYYY-MM-DD"));
     },
     attributes() {
       return this.dates.map((date) => ({
@@ -123,8 +124,26 @@ export default {
   },
   watch: {
     selectDays() {
-      //기간 반환하는 함수
-      this.selectedDayText = "";
+      if (this.selectDays.length === 0) {
+        this.selectedDayText = "";
+      } else if (this.selectDays.length === 1) {
+        this.selectedDayText = dayjs(this.selectDays[0].date).format(
+          "YYYY년MM월DD일"
+        );
+      } else {
+        const startDate =
+          this.selectDays[0].date < this.selectDays[1].date
+            ? this.selectDays[0].date
+            : this.selectDays[1].date;
+        const endDate =
+          this.selectDays[0].date > this.selectDays[1].date
+            ? this.selectDays[0].date
+            : this.selectDays[1].date;
+        const formatStartDate = dayjs(startDate).format("YYYY년 MM월 DD일");
+        const formatEndDate = dayjs(endDate).format("MM월 DD일");
+
+        this.selectedDayText = `${formatStartDate} ~ ${formatEndDate}`;
+      }
     },
   },
   methods: {
@@ -196,9 +215,11 @@ export default {
   width: 100%;
   color: #787878;
   display: flex;
+  padding-left: 4vw;
   justify-content: space-between;
   border-bottom-left-radius: 1.3333vw;
   border-bottom-right-radius: 1.3333vw;
+
   & .selected-date-text {
     max-width: 45.3333vw;
     display: flex;
