@@ -44,7 +44,7 @@ export default Vue.extend({
 
   .timeText {
     font-size: 3.2vw;
-    font-weight: normal;
+    font-weight: bold;
     font-stretch: normal;
     font-style: normal;
     line-height: 0.92;

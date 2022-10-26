@@ -141,6 +141,7 @@ export default {
   line-height: 1.14;
   letter-spacing: normal;
   color: #0f1e44;
+  font-weight: bold;
 }
 .container {
   padding: 4vw 4.053vw;
@@ -163,6 +164,7 @@ export default {
     line-height: 1;
     letter-spacing: normal;
     color: #000;
+    font-weight: bold;
   }
   .description {
     margin: 0 0 8vw 0;
@@ -183,6 +185,7 @@ export default {
     line-height: 1.14;
     letter-spacing: normal;
     color: #0f1e44;
+    font-weight: bold;
   }
   .notificationWrapper {
     height: 12.533vw;
@@ -207,6 +210,7 @@ export default {
     line-height: 1.23;
     letter-spacing: normal;
     color: #222;
+    font-weight: bold;
   }
   .moreImage {
     object-fit: contain;

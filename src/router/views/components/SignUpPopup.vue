@@ -9,6 +9,7 @@
       @clicked-cancel="cancel"
     >
       <div slot="content">
+        <div class="content-title">{{ "XXX 피트니스 센터" }}</div>
         <div class="card">
           <div class="text-wrapper">
             <div class="left-text">
@@ -27,7 +28,7 @@
               </div>
             </div>
             <div class="right-text">
-              <span class="top">{{ "월 10,000원" }}</span>
+              <span class="top bold">{{ "월 10,000원" }}</span>
               <div class="bottom">{{ "정기결제" }}</div>
             </div>
           </div>
@@ -62,12 +63,16 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.content-title {
+  margin-top: 6.6667vw;
+  font-size: 3.4667vw;
+  margin-bottom: 3.2vw;
+}
 .card {
   width: 100%;
   border-radius: 3.2vw;
   padding: 5.3333vw 4vw;
   background-color: rgba(192, 205, 241, 0.17);
-  margin-top: 6.6667vw;
   margin-bottom: 10.6667vw;
   font-size: 3.4667vw;
 }
@@ -90,6 +95,10 @@ export default {
 .left-text {
   display: flex;
   flex-direction: column;
+
+  & .top {
+    font-weight: bold;
+  }
 }
 
 .left-text .bottom {
@@ -107,5 +116,9 @@ export default {
 }
 .bottom {
   margin-top: 1.8vw;
+}
+
+.bold {
+  font-weight: bold;
 }
 </style>

@@ -34,7 +34,7 @@ export default Vue.extend({
   .label {
     width: 17.0667vw;
     font-size: 3.467vw;
-    font-weight: normal;
+    font-weight: bold;
     font-stretch: normal;
     font-style: normal;
     line-height: 1.23;

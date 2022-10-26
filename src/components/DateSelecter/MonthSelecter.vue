@@ -50,9 +50,11 @@ export default {
   width: 100%;
   text-align: center;
   margin-bottom: 5.3333vw;
+  font-weight: bold;
 }
 
 .month-buttons {
+  font-weight: bold;
   &.right {
     display: flex;
     justify-content: end;

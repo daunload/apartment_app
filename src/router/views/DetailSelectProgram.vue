@@ -61,7 +61,7 @@ export default Vue.extend({
 
     .title {
       font-size: 3.733vw;
-      font-weight: normal;
+      font-weight: bold;
       font-stretch: normal;
       font-style: normal;
       line-height: 1.21;

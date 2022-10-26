@@ -31,6 +31,7 @@ export default {
   margin-top: 3.2vw;
 }
 .title {
+  font-weight: bold;
   margin-bottom: 3.4667vw;
   font-size: 3.2vw;
   display: flex;

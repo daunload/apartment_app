@@ -7,7 +7,9 @@
           {{ text }}
         </div>
       </div>
-      <div v-else class="right-text">{{ rightText }}</div>
+      <div v-else class="right-text" :class="{ bold: isRightBold }">
+        {{ rightText }}
+      </div>
       <div v-if="warningText" class="warning-text"></div>
       <div v-else-if="warningMultiLineText" class="warning-text multiline-text">
         <div v-for="(text, index) in warningMultiLineText" :key="index">
@@ -28,6 +30,10 @@ export default {
     },
     rightText: {
       type: String,
+      require: false,
+    },
+    isRightBold: {
+      type: Boolean,
       require: false,
     },
     multiLineText: {
@@ -65,8 +71,13 @@ export default {
   }
 }
 
+.bold {
+  font-weight: bold;
+}
+
 .left-text {
   font-size: 3.4667vw;
+  font-weight: bold;
 }
 .right-text {
   text-align: right;

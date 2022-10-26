@@ -67,6 +67,7 @@ export default {
   width: 100%;
   text-align: center;
   font-size: 4vw;
+  font-weight: bold;
 }
 .buttons {
   display: flex;
@@ -77,6 +78,7 @@ export default {
     font-size: 3.7333vw;
     width: 32.5333vw;
     height: 12vw;
+    font-weight: bold;
   }
 
   & button.cancel {

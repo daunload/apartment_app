@@ -30,6 +30,7 @@ export default {
   width: 100%;
   justify-content: center;
   align-items: center;
+  font-weight: bold;
 }
 .checkbox {
   margin-right: 1.3333vw;
