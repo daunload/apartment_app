@@ -21,7 +21,7 @@
     <!-- 커뮤니티 시설 이용 등록  -->
     <register-locker-popup :isOpen.sync="button4" />
     <!-- 캘린더 모달 -->
-    <calendar-picker :isOpen="button5" />
+    <calendar-picker :isOpen.sync="button5" />
   </div>
 </template>
 
