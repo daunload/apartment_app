@@ -12,7 +12,7 @@
       </Calendar>
       <div class="footer">
         <div class="selected-date-text">
-          {{ selectedDayText }}
+          {{ dates }}
         </div>
         <div class="buttons">
           <button class="cancel" @click="cancel">취소</button>
@@ -31,6 +31,7 @@
 
 <script>
 import Calendar from "v-calendar/lib/components/calendar.umd";
+import dayjs from "dayjs";
 
 export default {
   props: {
@@ -109,7 +110,7 @@ export default {
   },
   computed: {
     dates() {
-      return this.selectDays.map((day) => day.date);
+      return this.selectDays.map((day) => dayjs(day.date).format("YYYY-MM-DD"));
     },
     attributes() {
       return this.dates.map((date) => ({
@@ -138,6 +139,7 @@ export default {
           date: day.date,
         });
       }
+      console.log(this.selectDays);
     },
     cancel() {
       this.$emit("update:isOpen", false);
