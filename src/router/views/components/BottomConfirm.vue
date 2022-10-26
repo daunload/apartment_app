@@ -39,7 +39,7 @@ export default {
 .button-wrapper {
   position: fixed;
   bottom: 0;
-  box-shadow: 0 -2px 4px 0 rgba(75, 88, 122, 0.15);
+  box-shadow: 0 -0.5333vw 1.0667vw 0 rgba(75, 88, 122, 0.15);
   padding: 5.0667vw 4vw;
 
   width: 100%;
