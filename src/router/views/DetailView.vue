@@ -121,7 +121,7 @@ export default {
 .sub-title {
   display: flex;
   flex: none;
-  font-size: 14px;
+  font-size: 3.7333vw;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
@@ -142,7 +142,7 @@ export default {
     margin: 0 0 3.2vw 0;
   }
   .title {
-    font-size: 17px;
+    font-size: 4.5333vw;
     margin: 4.8vw 0 3.2vw 0;
     font-weight: normal;
     font-stretch: normal;
@@ -153,7 +153,7 @@ export default {
   }
   .description {
     margin: 0 0 8vw 0;
-    font-size: 13px;
+    font-size: 3.4667vw;
     font-weight: normal;
     font-stretch: normal;
     font-style: normal;
@@ -163,7 +163,7 @@ export default {
   }
   .subTitle {
     margin: 0 0 5.333vw 0;
-    font-size: 14px;
+    font-size: 3.7333vw;
     font-weight: normal;
     font-stretch: normal;
     font-style: normal;
@@ -199,7 +199,7 @@ export default {
     object-fit: contain;
   }
   .text {
-    font-size: 13px;
+    font-size: 3.4667vw;
     font-weight: normal;
     font-stretch: normal;
     font-style: normal;

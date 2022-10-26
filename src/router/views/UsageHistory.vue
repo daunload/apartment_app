@@ -182,7 +182,7 @@ export default {
 
   .infoWrapper {
     margin: 4vw 0;
-    border-radius: 5px;
+    border-radius: 1.3333vw;
     border: solid 0.267vw #ebedf3;
     background-color: #fff;
 

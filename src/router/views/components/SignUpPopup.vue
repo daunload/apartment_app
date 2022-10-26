@@ -5,6 +5,8 @@
       :title="'커뮤니티 시설 이용 등록'"
       :cancelText="'취소'"
       :confirmText="'등록하기'"
+      @clicked-confirm="confirm"
+      @clicked-cancel="cancel"
     >
       <div slot="content">
         <div class="card">
@@ -46,6 +48,14 @@ export default {
     isOpen: {
       type: Boolean,
       require: true,
+    },
+  },
+  methods: {
+    confirm() {
+      this.$emit("update:isOpen", false);
+    },
+    cancel() {
+      this.$emit("update:isOpen", false);
     },
   },
 };
