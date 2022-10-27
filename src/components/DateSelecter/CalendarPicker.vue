@@ -2,14 +2,13 @@
   <div v-if="isOpen">
     <div class="overlay"></div>
     <div id="popup" class="popup-wrapper">
-      <Calendar
+      <vc-date-picker
+        v-model="selectedDateRange"
+        is-range
         is-expanded
-        :attributes="attributes"
-        :min-date="new Date()"
         :locale="{ id: 'en', firstDayOfWeek: 2, masks: { weekdays: 'WWW' } }"
-        @dayclick="onDayClick"
-      >
-      </Calendar>
+        :attribute="calendarAttributes"
+      />
       <div class="footer">
         <div class="selected-date-text">
           {{ selectedDayText }}
@@ -30,7 +29,6 @@
 </template>
 
 <script>
-import Calendar from "v-calendar/lib/components/calendar.umd";
 import dayjs from "dayjs";
 
 export default {
@@ -39,111 +37,49 @@ export default {
       type: Boolean,
       require: true,
     },
-  },
-  components: {
-    Calendar,
+    datesInfo: {
+      type: Array,
+      require: false,
+    },
   },
   data() {
     return {
+      selectedDateRange: {
+        start: null,
+        end: null,
+      },
       selectedDayText: "",
-      selectDays: [],
-      // attributes: [
-      //   {
-      //     dot: {
-      //       style: {
-      //         backgroundColor: "#4c93ff",
-      //       },
-      //     },
-      //     dates: [
-      //       new Date(2022, 9, 27),
-      //       new Date(2022, 9, 28),
-      //       new Date(2022, 9, 29),
-      //       new Date(2022, 9, 30),
-      //       new Date(2022, 9, 31),
-      //     ],
-      //   },
-      //   {
-      //     dot: {
-      //       style: {
-      //         backgroundColor: "#efefef",
-      //       },
-      //     },
-      //     dates: [
-      //       new Date(2022, 9, 1),
-      //       new Date(2022, 9, 2),
-      //       new Date(2022, 9, 3),
-      //       new Date(2022, 9, 4),
-      //       new Date(2022, 9, 5),
-      //       new Date(2022, 9, 6),
-      //       new Date(2022, 9, 7),
-      //       new Date(2022, 9, 8),
-      //       new Date(2022, 9, 9),
-      //       new Date(2022, 9, 10),
-      //       new Date(2022, 9, 11),
-      //       new Date(2022, 9, 12),
-      //       new Date(2022, 9, 13),
-      //       new Date(2022, 9, 14),
-      //       new Date(2022, 9, 15),
-      //       new Date(2022, 9, 16),
-      //       new Date(2022, 9, 17),
-      //       new Date(2022, 9, 18),
-      //       new Date(2022, 9, 19),
-      //       new Date(2022, 9, 20),
-      //       new Date(2022, 9, 21),
-      //       new Date(2022, 9, 22),
-      //       new Date(2022, 9, 23),
-      //       new Date(2022, 9, 24),
-      //       new Date(2022, 9, 25),
-      //       new Date(2022, 9, 26),
-      //     ],
-      //   },
-      //   {
-      //     highlight: {
-      //       start: { fillMode: "outline" },
-      //       base: { fillMode: "light" },
-      //       end: { fillMode: "outline" },
-      //     },
-      //     dates: { start: new Date(2022, 10, 14), end: new Date(2022, 10, 18) },
-      //   },
-      // ],
+      calendarAttributes: [],
     };
   },
-  computed: {
-    dates() {
-      return this.selectDays.map((day) => dayjs(day.date).format("YYYY-MM-DD"));
-    },
-    attributes() {
-      return this.dates.map((date) => ({
-        highlight: true,
-        dates: date,
-      }));
-    },
-    isSelected() {
-      return this.selectDays.length > 0;
-    },
+  created() {
+    this.calendarAttributes = {
+      dot: {
+        style: {
+          backgroundColor: "#4c93ff",
+        },
+      },
+      dates: this.datesInfo.map((dateInfo) => dateInfo.date),
+    };
   },
   watch: {
-    selectDays() {
-      if (this.selectDays.length === 0) {
-        this.selectedDayText = "";
-      } else if (this.selectDays.length === 1) {
-        this.selectedDayText = dayjs(this.selectDays[0].date).format(
-          "YYYY년MM월DD일"
-        );
-      } else {
-        const startDate =
-          this.selectDays[0].date < this.selectDays[1].date
-            ? this.selectDays[0].date
-            : this.selectDays[1].date;
-        const endDate =
-          this.selectDays[0].date > this.selectDays[1].date
-            ? this.selectDays[0].date
-            : this.selectDays[1].date;
-        const formatStartDate = dayjs(startDate).format("YYYY년 MM월 DD일");
-        const formatEndDate = dayjs(endDate).format("MM월 DD일");
+    selectedDateRange() {
+      const startDate = this.selectedDateRange.start;
+      const endDate = this.selectedDateRange.end;
 
+      const formatStartDate = dayjs(startDate).format("YYYY년 MM월 DD일");
+      const formatEndDate = dayjs(endDate).format("MM월 DD일");
+
+      if (this.isSameDate(startDate, endDate)) {
+        this.selectedDayText = `${formatStartDate}`;
+      } else {
         this.selectedDayText = `${formatStartDate} ~ ${formatEndDate}`;
       }
+    },
+  },
+  computed: {
+    isSelected() {
+      return this.selectedDayText !== "";
     },
   },
   methods: {
@@ -163,6 +99,13 @@ export default {
     },
     confirm() {
       this.$emit("update:isOpen", false);
+    },
+    isSameDate(startDate, endDate) {
+      return (
+        startDate.getFullYear() === endDate.getFullYear() &&
+        startDate.getMonth() === endDate.getMonth() &&
+        startDate.getDate() === endDate.getDate()
+      );
     },
   },
 };
@@ -206,7 +149,7 @@ export default {
 }
 .popup-wrapper::v-deep .vc-weeks {
   margin: 0 4vw;
-  padding: 0;
+  padding: 0 0 3.7333vw 0;
   border-bottom: solid 0.2667vw #f4f4f4;
 }
 .footer {
