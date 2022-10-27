@@ -7,8 +7,9 @@
         is-range
         is-expanded
         :locale="{ id: 'en', firstDayOfWeek: 2, masks: { weekdays: 'WWW' } }"
-        :attribute="calendarAttributes"
-      />
+        :select-attribute="calendarAttributes"
+      >
+      </vc-date-picker>
       <div class="footer">
         <div class="selected-date-text">
           {{ selectedDayText }}
@@ -49,17 +50,14 @@ export default {
         end: null,
       },
       selectedDayText: "",
-      calendarAttributes: [],
     };
   },
   created() {
     this.calendarAttributes = {
-      dot: {
-        style: {
-          backgroundColor: "#4c93ff",
-        },
+      date: new Date(),
+      selectAttribute: {
+        dot: true,
       },
-      dates: this.datesInfo.map((dateInfo) => dateInfo.date),
     };
   },
   watch: {
@@ -112,9 +110,24 @@ export default {
 </script>
 
 <style scoped lang="scss">
+#popup::v-deep .vc-day-content::before {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+
+  width: 1.2vw;
+  height: 1.2vw;
+  border-radius: 1.3333vw;
+  background-color: #4c93ff;
+}
+
+#popup::v-deep .dot-disable .vc-day-content::after {
+  background-color: #efefef;
+}
+
 .overlay {
   border-radius: inherit;
-  bottom: 0;
+  bottom: -1;
   height: 100%;
   left: 0;
   position: absolute;
